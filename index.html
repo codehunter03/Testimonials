@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script defer src="script.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Hero Section -->
+  <section class="text-center py-12 bg-white shadow">
+    <h1 class="text-4xl font-bold">Hi, I'm John Doe</h1>
+    <p class="text-lg mt-2">Software Engineer | Problem Solver | Tech Enthusiast</p>
+  </section>
+
+  <!-- Career Highlights -->
+  <section class="p-6" id="highlights">
+    <h2 class="text-2xl font-semibold mb-4">Career Highlights</h2>
+    <ul class="list-disc list-inside space-y-2" id="highlightList"></ul>
+  </section>
+
+  <!-- Skills -->
+  <section class="p-6 bg-white" id="skills">
+    <h2 class="text-2xl font-semibold mb-4">Skills</h2>
+    <div class="flex flex-wrap gap-4" id="skillsList"></div>
+  </section>
+
+  <!-- Work Experience -->
+  <section class="p-6" id="experience">
+    <h2 class="text-2xl font-semibold mb-4">Work Experience</h2>
+    <div id="experienceList" class="space-y-4"></div>
+  </section>
+
+  <!-- Education -->
+  <section class="p-6 bg-white" id="education">
+    <h2 class="text-2xl font-semibold mb-4">Education</h2>
+    <div id="educationList" class="space-y-4"></div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="p-6" id="contact">
+    <h2 class="text-2xl font-semibold mb-4">Get in Touch</h2>
+    <form action="https://formspree.io/f/mknkxxxx" method="POST" class="space-y-4 max-w-md">
+      <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 border rounded" />
+      <input type="email" name="email" placeholder="Your Email" required class="w-full p-2 border rounded" />
+      <textarea name="message" placeholder="Your Message" required class="w-full p-2 border rounded"></textarea>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Send Message</button>
+    </form>
+  </section>
+
+  <script>
+    const data = {
+      highlights: [
+        "3+ years of experience in software testing and automation",
+        "AWS Cloud Practitioner & Developer Associate Certified",
+        "Automated 40+ web services with dynamic execution design"
+      ],
+      skills: ["JavaScript", "HTML", "CSS", "SQL", "Java", "Shell Scripting", "Rest Assured", "SoapUI", "Git"],
+      experience: [
+        {
+          role: "Project Engineer",
+          company: "Wipro Ltd, Pune",
+          period: "Dec 2021 – Present",
+          details: "Working on web and mainframe testing, API automation, and environment management."
+        }
+      ],
+      education: [
+        {
+          degree: "B.E. in Electronics & Telecommunication",
+          university: "Nagpur University",
+          grade: "8.7 CGPA"
+        }
+      ]
+    };
+
+    function populateData() {
+      const highlightList = document.getElementById("highlightList");
+      data.highlights.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        highlightList.appendChild(li);
+      });
+
+      const skillsList = document.getElementById("skillsList");
+      data.skills.forEach(skill => {
+        const span = document.createElement("span");
+        span.textContent = skill;
+        span.className = "bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm";
+        skillsList.appendChild(span);
+      });
+
+      const experienceList = document.getElementById("experienceList");
+      data.experience.forEach(exp => {
+        const div = document.createElement("div");
+        div.innerHTML = `<h3 class='text-xl font-medium'>${exp.role} at ${exp.company}</h3><p class='text-sm text-gray-600'>${exp.period}</p><p>${exp.details}</p>`;
+        experienceList.appendChild(div);
+      });
+
+      const educationList = document.getElementById("educationList");
+      data.education.forEach(edu => {
+        const div = document.createElement("div");
+        div.innerHTML = `<h3 class='text-xl font-medium'>${edu.degree}</h3><p>${edu.university}</p><p class='text-sm text-gray-600'>${edu.grade}</p>`;
+        educationList.appendChild(div);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", populateData);
+  </script>
+
+</body>
+</html>
