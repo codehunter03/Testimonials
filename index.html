@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Devendra Pillay</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  
+
   <style>
     html {
       scroll-behavior: smooth;
@@ -30,7 +32,6 @@
       overflow: hidden;
       z-index: -1;
     }
-
     .blob {
       position: absolute;
       border-radius: 50%;
@@ -38,7 +39,6 @@
       filter: blur(80px);
       animation: moveBlobs 20s infinite ease-in-out;
     }
-
     .blob1 {
       width: 400px;
       height: 400px;
@@ -46,7 +46,6 @@
       top: 10%;
       left: 10%;
     }
-
     .blob2 {
       width: 300px;
       height: 300px;
@@ -54,7 +53,6 @@
       top: 50%;
       left: 50%;
     }
-
     .blob3 {
       width: 500px;
       height: 500px;
@@ -62,23 +60,19 @@
       top: 30%;
       left: 80%;
     }
-
     @keyframes moveBlobs {
       0%, 100% { transform: translate(0, 0); }
       50% { transform: translate(50px, 80px); }
     }
-
     .fade-up {
       opacity: 0;
       transform: translateY(20px);
       transition: all 1s ease-out;
     }
-
     .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .tag {
       background-color: #e2e8f0;
       color: #2d3748;
@@ -88,21 +82,18 @@
       margin: 0.25rem;
       display: inline-block;
     }
-    /* Updated Highlighted Box Styling */
-.highlight-box {
-  background-color: #ffffff; /* White background */
-  border: 1px solid #e5e7eb; /* Light gray border */
-  padding: 1.5rem; /* Slightly larger padding */
-  border-radius: 0.75rem; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-}
-
-.highlight-box:hover {
-  transform: translateY(-4px); /* Slight lift on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
-}
-
+    .highlight-box {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .highlight-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -132,19 +123,16 @@
   <!-- Hero -->
   <section class="text-center py-24 bg-gradient-to-b from-gray-100 to-white">
     <h1 class="text-5xl font-semibold leading-tight">Hi, I’m Devendra Pillay</h1>
-    <p class="text-xl text-gray-600 mt-4">QA Engineer | Automation Specialist | Telecom Domain</p>
+    <p class="text-xl text-gray-600 mt-4">Full-Stack Engineer | Telecom Domain | Automation Specialist </p>
   </section>
 
   <!-- Profile Section -->
-<section id="profile" class="max-w-4xl mx-auto px-6 py-20 fade-up">
-  <h2 class="text-3xl font-semibold text-center mb-8">Profile</h2>
-  <p class="text-lg text-gray-800 leading-relaxed text-justify">
-    Skilled QA Engineer with deep expertise in prepay systems and online charging system (OCS) applications within the telecom domain. Proven ability to ensure seamless functionality across complex billing and charging platforms, contributing to reliable and customer-centric service delivery.
-
-Experienced in both web and mainframe application testing, with hands-on proficiency in API testing (SoapUI, Rest Assured), Shell scripting, and automation frameworks that streamline validation processes and reduce manual overhead. Adept at working in Agile environments, collaborating with cross-functional teams to deliver high-quality software under tight deadlines. Known for a strong focus on process efficiency, defect prevention, and driving continuous improvements in QA practices.
-  </p>
-</section>
-
+  <section id="profile" class="max-w-4xl mx-auto px-6 py-20 fade-up">
+    <h2 class="text-3xl font-semibold text-center mb-8">Profile</h2>
+    <p class="text-lg text-gray-800 leading-relaxed text-justify">
+      Results-driven Software Engineer with 4 years of experience in the telecom domain, progressing from a Quality Assurance Engineer to a Software Developer. Proven ability to bridge testing and development by ensuring reliability, scalability, and innovation across complex systems. Delivered measurable impact during QA tenure through automation, API testing, and system stability improvements, including a 40% reduction in production issues. Currently focused on designing and developing high-performance modules in C++ and Java for rating, charging, and online charging systems (OCS). Recognized for strong problem-solving skills, deep domain expertise, and cross-functional collaboration to deliver customer-centric and business-driven software solutions.
+    </p>
+  </section>
 
   <!-- Highlights -->
   <section id="highlights" class="max-w-4xl mx-auto px-6 py-20 fade-up">
@@ -154,27 +142,25 @@ Experienced in both web and mainframe application testing, with hands-on profici
 
   <!-- Skills -->
   <section id="skills" class="bg-gray-50 py-20 px-6 fade-up">
-  <h2 class="text-3xl font-semibold text-center mb-8">Tools & Technologies</h2>
-  
+    <h2 class="text-3xl font-semibold text-center mb-8">Tools & Technologies</h2>
+    <div class="flex flex-wrap justify-center gap-3 mb-12" id="skillsList"></div>
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      <span class="tag">C/C++</span>
+      <span class="tag">Design & Development</span>
+      <span class="tag">L3 Support</span>
+      <span class="tag">Functional Testing</span>
+      <span class="tag">API Testing (REST/SOAP)</span>
+      <span class="tag">Shell Scripting</span>
+      <span class="tag">RHE-Linux</span>
+      <span class="tag">Web Automation</span>
+      <span class="tag">Oracle SQL Developer</span>
+      <span class="tag">Jenkins</span>
+      <span class="tag">JIRA</span>
+      <span class="tag">HP-ALM</span>
+      
+    </div>
 
-  <!-- Technical Skills Tags -->
-  <div class="flex flex-wrap justify-center gap-3 mb-12" id="skillsList"></div>
-  <div class="flex flex-wrap justify-center gap-3 mb-12">
-    <span class="tag">Manual Testing</span>
-    <span class="tag">API Testing (REST/SOAP)</span>
-    <span class="tag">Web Automation</span>
-    <span class="tag">Shell Scripting</span>
-    <span class="tag">UNIX/Linux</span>
-    <span class="tag">Selenium</span>
-    <span class="tag">TestNG</span>
-    <span class="tag">Ginger Automation Tool</span>
-    <span class="tag">SQL</span>
-    <span class="tag">JIRA</span>
-    <span class="tag">HP-ALM</span>
-    <span class="tag">Jenkins</span>
-  </div>
-
-  <!-- Key Skills Section -->
+    <!-- Key Skills Section -->
   <div class="max-w-5xl mx-auto space-y-6">
     <h3 class="text-2xl font-semibold text-center mb-4">Key Skills</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-800">
@@ -232,8 +218,7 @@ Experienced in both web and mainframe application testing, with hands-on profici
       </div>
     </div>
   </div>
-</section>
-
+  </section>
 
   <!-- Experience -->
   <section id="experience" class="max-w-4xl mx-auto px-6 py-20 fade-up">
@@ -241,27 +226,11 @@ Experienced in both web and mainframe application testing, with hands-on profici
     <div id="experienceList" class="space-y-6"></div>
   </section>
 
- <!-- Projects -->
-<section id="projects" class="max-w-6xl mx-auto px-6 py-20 fade-up">
-  <h2 class="text-3xl font-semibold text-center mb-8">Projects</h2>
-  <div id="projectsList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-</section>
-
   <!-- Education -->
   <section id="education" class="bg-gray-50 py-20 px-6 fade-up">
     <h2 class="text-3xl font-semibold text-center mb-8">Education</h2>
     <div id="educationList" class="max-w-3xl mx-auto space-y-6"></div>
-    
   </section>
-
-  <!-- Research Papers & Thesis -->
-  <section id="research" class="max-w-4xl mx-auto px-6 py-20 fade-up">
-    <h2 class="text-3xl font-semibold text-center mb-8">Research Papers & Thesis</h2>
-    <div id="researchList" class="space-y-6 text-gray-800 text-lg">
-      <!-- JS will populate this -->
-    </div>
-  </section>
-
 
   <!-- Contact -->
   <section id="contact" class="py-12 px-6 fade-up">
@@ -292,16 +261,36 @@ Experienced in both web and mainframe application testing, with hands-on profici
         "Resolved 95% of critical production incidents within SLA, reducing downtime by 30%.",
         "Implemented API automation using ReadyAPI, improving test coverage and efficiency."
       ],
-      skills: [
-        "Manual Testing", "API Testing (REST/SOAP)", "Web Automation", "Shell Scripting",
-        "UNIX/Linux","Selenium","TestNG", "Ginger Automation Tool", "SQL", "JIRA", "HP-ALM", "Jenkins"
-      ],
       experience: [
         {
-          role: "Functional Test Engineer",
+          role: "Functional Test Engineer (QA)",
           company: "Amdocs | Pune, India",
-          period: "July 2021 – Present",
-          details: "Experienced QA Tester with over 3.5 years of expertise in functional & configuration testing of prepay applications for EE-BT Group (Everything Everywhere).Skilled in testing SOAP and RESTful APIs using ReadyAPI, with a strong focus on test case creation, execution, and response validation. Collaborative team player with a proven ability to ensure quality assurance and deliver results within strict timelines. Tools: Oracle Enterprise Linux, HP-UX Unix, Oracle SQL Developer, Jira, Ginger, HP-QC,ReadyAPI, Shell Scripting, Groovy Scripting, RHEL."
+          period: "July 2021 – Dec 2024",
+          details: `
+            <ul class="list-disc list-inside space-y-1">
+              <li>Performed functional & configuration testing of prepay applications for EE-BT Group (Everything Everywhere).</li>
+              <li>Automated 50% of manual test cases using Shell scripting & Ginger, reducing testing time by 40%.</li>
+              <li>Led the testing effort for British Telecom’s Nexus payment gateway, executing high-volume test cases with a substantial reduction in production defects.</li>
+              <li>Conducted API testing (SOAP & REST) using ReadyAPI, improving test coverage and accelerating execution.</li>
+              <li>Debugged production incidents, executed RCA, and resolved defects within SLA, minimizing downtime.</li>
+              <li><strong>Tools:</strong> Oracle Enterprise Linux, HP-UX Unix, Oracle SQL Developer, Jira, Ginger, HP-QC, ReadyAPI, Shell Scripting, Groovy.</li>
+            </ul>
+          `
+        },
+        {
+          role: "Software Developer",
+          company: "Amdocs | Pune, India",
+          period: "Jan 2025 – Present",
+          details: `
+            <ul class="list-disc list-inside space-y-1">
+              <li>Transitioned into a developer role within the same application team, leveraging in-depth domain knowledge of prepay systems.</li>
+              <li>Designing, developing, and enhancing modules for rating, charging, and OCS (Online Charging Systems) to improve performance and scalability.</li>
+              <li>Writing clean, optimized, and maintainable code in C++/Java, following OOP principles and design best practices.</li>
+              <li>Implementing automation utilities and scripts to streamline deployments and improve efficiency.</li>
+              <li>Collaborating with cross-functional teams to design new features and ensure seamless integration across systems.</li>
+              <li>Continuing to contribute to production stability by proactively resolving bugs and optimizing system performance.</li>
+            </ul>
+          `
         }
       ],
       education: [
@@ -315,76 +304,23 @@ Experienced in both web and mainframe application testing, with hands-on profici
           university: "S.B. Jain Institute, Nagpur University - 2021",
           grade: "8.8 CGPA"
         }
-      ],
-      research: [
-      {
-        title: "API INTEGRATION TO TEST OCS PREPAY APPLICATION",
-        type: "M.Tech Thesis",
-        year: "2024-2025",
-        journal: "N/A",
-        link: "",
-        description: "In the telecommunications sector, the integration of SOAP web service APIs with Online Charging Systems (OCS) Prepay application is essential for enhancing real-time billing and customer management. This project explores the development, deployment and testing of a SOAP-based API framework to facilitate seamless communication across the application (OCS).The integration leverages SOAP’s standardized messaging protocol to ensure secure, reliable,and interoperable data exchange. Key functionalities include real-time balance inquiries,transaction processing, and service provisioning. The testing phase encompasses system testing to validate the functionality, performance of the web services via APIs. System testing evaluates and validate the overall performance, scalability, and reliability under various load conditions. Overall, this work contributes operational efficiency by enabling automated testing which caters account management, dynamic tariff adjustments, and instant service activation and payments."
-      },
-      {
-        title: "Optical Wireless Communication Technologies",
-        type: "B.Tech Thesis & Research Paper",
-        year: "2021",
-        journal: "International Journal of All Research Education and Scientific Methods (IJARESM)",
-        link: "http://www.ijaresm.com/review-on-optical-wireless-communication-technologies",
-        description: "In the field of wireless communication, optical wireless communication (OWC) has become alluring much more expeditiously than researchers and academia could have imagined. It is one of the most up-and-coming areas of research with incredible prospects of unprecedented outcomes which will noticeably modify the wireless market mostly dominated by radio frequency (RF) technologies. This review paper illuminates the functioning of optical wireless communication and other major development in this domain. Over the years, the depleting spectrum crisis and overuse of radio frequencies for various applications have caused data interference and path loss. This has caused researchers to look for better alternatives that not only serve their purpose efficiently but also validate themselves as a cleaner and sustainable communication system. Moreover, it also discusses why Light Fidelity is a better alternative to other OWC technologies and present RF communication systems."
-      },
-  
-]
-
-
+      ]
     };
 
-    // Add Projects Data
-    data.projects = [
-  {
-    title: "Automated Test Suite for Telecom Systems",
-    description: "Developed an automated test suite using Selenium and TestNG to validate telecom billing systems, reducing manual testing efforts by 50%.",
-    technologies: ["Selenium", "TestNG", "Java", "Jenkins"],
-    link: "https://github.com/codehunter03/telecom-test-suite"
-  },
-  {
-    title: "API Automation Framework",
-    description: "Built a robust API automation framework using ReadyAPI and Groovy scripting to test SOAP and RESTful APIs for telecom applications.",
-    technologies: ["ReadyAPI", "Groovy", "SOAP", "REST"],
-    link: "https://github.com/codehunter03/api-automation-framework"
-  },
-  {
-    title: "Performance Testing for Telecom Applications",
-    description: "Designed and executed performance tests for telecom applications using JMeter, identifying bottlenecks and improving system scalability.",
-    technologies: ["JMeter", "Java", "Linux"],
-    link: "https://github.com/codehunter03/performance-testing"
-  },
-  {
-    title: "Web Automation for E-Commerce",
-    description: "Developed a Selenium-based web automation framework to test e-commerce platforms, ensuring seamless user experience and functionality.",
-    technologies: ["Selenium", "Python", "Jenkins"],
-    link: "https://github.com/codehunter03/web-automation"
-  }
-];
+    // Populate Work Experience
+    const experienceList = document.getElementById("experienceList");
+    data.experience.forEach(exp => {
+      const div = document.createElement("div");
+      div.className = "highlight-box";
+      div.innerHTML = `
+        <h3 class="text-xl font-semibold text-gray-900">${exp.role}</h3>
+        <p class="text-sm text-gray-600 mb-2">${exp.company} | ${exp.period}</p>
+        <div class="text-gray-800">${exp.details}</div>
+      `;
+      experienceList.appendChild(div);
+    });
 
-const projectsList = document.getElementById("projectsList");
-data.projects.forEach(project => {
-  const div = document.createElement("div");
-  div.className = "highlight-box flex flex-col justify-between items-center text-center h-64"; // Square box with fixed height
-  div.innerHTML = `
-    <h3 class="text-lg font-semibold text-gray-900">${project.title}</h3>
-    <p class="text-sm text-gray-600 mb-2">${project.description}</p>
-    <p class="text-xs text-gray-500 mb-2"><strong>Technologies:</strong> ${project.technologies.join(", ")}</p>
-    ${
-      project.link
-        ? `<a href="${project.link}" class="text-blue-600 underline hover:text-blue-800" target="_blank">View Project</a>`
-        : ""
-    }
-  `;
-  projectsList.appendChild(div);
-});
-
-
+    // Populate Career Highlights
     const highlightList = document.getElementById("highlightList");
     data.highlights.forEach(item => {
       const li = document.createElement("li");
@@ -392,59 +328,18 @@ data.projects.forEach(project => {
       highlightList.appendChild(li);
     });
 
-    // Highlight Key Skills
-const keySkillsContainer = document.querySelector(".grid.grid-cols-1.md\\:grid-cols-2.gap-6.text-gray-800");
-keySkillsContainer.querySelectorAll("div").forEach(skillBox => {
-  skillBox.classList.add("highlight-box"); // Add the highlight-box class to each skill box
-});
-    
-
-    // Highlight Work Experience
-const experienceList = document.getElementById("experienceList");
-data.experience.forEach(exp => {
-  const div = document.createElement("div");
-  div.className = "highlight-box"; // Use updated highlight-box class
-  div.innerHTML = `
-    <h3 class="text-xl font-semibold text-gray-900">${exp.role}</h3>
-    <p class="text-sm text-gray-600 mb-2">${exp.company} | ${exp.period}</p>
-    <p class="text-gray-800">${exp.details}</p>
-  `;
-  experienceList.appendChild(div);
-});
-
-// Highlight Education
-const educationList = document.getElementById("educationList");
-data.education.forEach(edu => {
-  const div = document.createElement("div");
-  div.className = "highlight-box"; // Use updated highlight-box class
-  div.innerHTML = `
-    <h3 class="text-xl font-semibold text-gray-900">${edu.degree}</h3>
-    <p class="text-gray-800">${edu.university}</p>
-    <p class="text-sm text-gray-600">${edu.grade}</p>
-  `;
-  educationList.appendChild(div);
-});
-
-// Highlight Research Papers & Thesis
-const researchList = document.getElementById("researchList");
-data.research.forEach(entry => {
-  const div = document.createElement("div");
-  div.className = "highlight-box"; // Use updated highlight-box class
-  div.innerHTML = `
-    <h3 class="text-xl font-semibold text-gray-900 mb-1">${entry.title}</h3>
-    <p class="text-sm text-gray-600 mb-1">${entry.type} | ${entry.year}</p>
-    <p class="text-gray-800 mb-1"><strong>Journal:</strong> ${entry.journal}</p>
-    ${
-      entry.link
-        ? `<p class="mb-2"><strong>Link:</strong> <a href="${entry.link}" class="text-blue-600 underline hover:text-blue-800" target="_blank">${entry.link}</a></p>`
-        : ""
-    }
-    <p class="text-gray-800">${entry.description}</p>
-  `;
-  researchList.appendChild(div);
-});
-
-
+    // Populate Education
+    const educationList = document.getElementById("educationList");
+    data.education.forEach(edu => {
+      const div = document.createElement("div");
+      div.className = "highlight-box";
+      div.innerHTML = `
+        <h3 class="text-xl font-semibold text-gray-900">${edu.degree}</h3>
+        <p class="text-gray-800">${edu.university}</p>
+        <p class="text-sm text-gray-600">${edu.grade}</p>
+      `;
+      educationList.appendChild(div);
+    });
 
     // Scroll animation
     const observer = new IntersectionObserver(entries => {
