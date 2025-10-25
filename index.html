@@ -552,21 +552,82 @@
   </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="text-xl font-semibold">Devendra Pillay</div>
-      <nav class="space-x-6 text-sm font-medium">
-        <a href="#highlights" class="hover:underline">Highlights</a>
-        <a href="#skills" class="hover:underline">Skills</a>
-        <a href="#experience" class="hover:underline">Experience</a>
-        <a href="#education" class="hover:underline">Education</a>
-        <a href="#contact" class="hover:underline">Contact</a>
-        <a href="https://github.com/codehunter03/Testimonials/blob/main/Devendra_Pillay_3899.pdf" download class="text-blue-600 hover:underline">
-          📥 Download CV
-        </a>
-      </nav>
-    </div>
-  </header>
+ 
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="text-xl font-semibold">Devendra Pillay</div>
+
+    <!-- Desktop nav (hidden on small screens) -->
+    <nav id="mainNav" class="hidden md:flex space-x-6 text-sm font-medium" aria-label="Primary">
+      <a href="#highlights" class="hover:underline">Highlights</a>
+      <a href="#skills" class="hover:underline">Skills</a>
+      <a href="#experience" class="hover:underline">Experience</a>
+      <a href="#education" class="hover:underline">Education</a>
+      <a href="#contact" class="hover:underline">Contact</a>
+      <a href="https://github.com/codehunter03/Testimonials/blob/main/Devendra_Pillay_3899.pdf" download class="text-blue-600 hover:underline">
+        📥 Download CV
+      </a>
+    </nav>
+
+    <!-- Mobile toggle (visible on small screens) -->
+    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-300" aria-label="Toggle menu" aria-expanded="false">
+      <!-- hamburger icon -->
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu (collapsed by default) -->
+  <div id="mobileMenu" class="md:hidden px-6 pb-4 hidden" aria-hidden="true">
+    <nav class="flex flex-col space-y-2 text-base font-medium" aria-label="Mobile">
+      <a href="#highlights" class="block py-2 hover:underline">Highlights</a>
+      <a href="#skills" class="block py-2 hover:underline">Skills</a>
+      <a href="#experience" class="block py-2 hover:underline">Experience</a>
+      <a href="#education" class="block py-2 hover:underline">Education</a>
+      <a href="#contact" class="block py-2 hover:underline">Contact</a>
+      <a href="https://github.com/codehunter03/Testimonials/blob/main/Devendra_Pillay_3899.pdf" download class="block py-2 text-blue-600 hover:underline">
+        📥 Download CV
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle: keeps desktop behaviour unchanged
+  (function(){
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', isOpen);
+      menu.setAttribute('aria-hidden', String(isOpen));
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Close mobile menu when a link is clicked (improves UX)
+    menu.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        menu.classList.add('hidden');
+        menu.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Ensure menu is hidden when resizing to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        menu.classList.add('hidden');
+        menu.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
 
   <!-- Hero -->
   <!-- <section class="text-center py-24 bg-gradient-to-b from-gray-100 to-white">
