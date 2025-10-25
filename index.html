@@ -8,6 +8,8 @@
   
 
   <style>
+    
+    
     html {
       scroll-behavior: smooth;
     }
@@ -94,7 +96,401 @@
       transform: translateY(-4px);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
+
+    /* New contact styles */
+    .contact-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .contact-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 1.5rem;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(56,189,248,0.04));
+      border: 1px solid rgba(99,102,241,0.08);
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+    }
+    .contact-deco {
+      position: absolute;
+      right: -80px;
+      bottom: -60px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.12), transparent 40%),
+                  radial-gradient(circle at 70% 70%, rgba(56,189,248,0.10), transparent 35%);
+      transform: rotate(20deg);
+      pointer-events: none;
+    }
+    .contact-left h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+    .contact-left p { color: #374151; margin-bottom: 1rem; }
+    .contact-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .meta-pill {
+      background: white;
+      border-radius: 9999px;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      color: #1f2937;
+      display: inline-flex;
+      gap: 0.5rem;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(2,6,23,0.06);
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+    .contact-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 0.9rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(90deg,#6366f1,#06b6d4);
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(6,95,70,0.06);
+      border: none;
+      cursor: pointer;
+    }
+    .btn.outline {
+      background: white;
+      color: #374151;
+      border: 1px solid rgba(15,23,42,0.06);
+      box-shadow: none;
+    }
+    .social-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .social-btn {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      background: white;
+      padding: 0.6rem 0.8rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(15,23,42,0.04);
+      box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+      text-decoration: none;
+      color: #111827;
+      font-weight: 600;
+    }
+    .social-icon {
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      background: linear-gradient(180deg, rgba(99,102,241,0.12), rgba(56,189,248,0.08));
+    }
+    .copy-feedback {
+      display: inline-block;
+      margin-left: 0.5rem;
+      color: #16a34a;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .copy-feedback.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 780px) {
+      .contact-card { grid-template-columns: 1fr; padding: 1.25rem; }
+      .contact-deco { display: none; }
+    }
+
+    
+      
+
   </style>
+
+  
+  <!-- Custom cursor: arrow + hand click animation -->
+
+  <style>
+    /* disable on touch devices */
+    @media (pointer: coarse) { .custom-cursor, .cursor-click { display: none !important; } }
+
+    /* hide native cursor */
+    body { cursor: none; }
+
+    /* cursor container */
+    .custom-cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 44px;
+      height: 44px;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate3d(-50%, -50%, 0);
+      transition: transform 120ms cubic-bezier(.2,.9,.2,1), opacity 120ms;
+      will-change: transform, opacity;
+      mix-blend-mode: normal;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.98;
+      filter: drop-shadow(0 4px 10px rgba(2,6,23,0.18));
+    }
+
+    /* new: use provided svg file as cursor */
+    .custom-cursor .cursor-img {
+      display: block;
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      transform-origin: center;
+      pointer-events: none;
+    }
+
+    /* pointer state: scale up the cursor svg */
+    .custom-cursor.pointer {
+      width: 56px;
+      height: 56px;
+    }
+    .custom-cursor.pointer .cursor-img {
+      width: 56px;
+      height: 56px;
+      transform: scale(1.06);
+      filter: drop-shadow(0 8px 18px rgba(6,95,70,0.08));
+    }
+
+    /* click ripple / hand-click float (unchanged) */
+    .cursor-click {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 64px;
+      height: 64px;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate3d(-50%, -50%, 0);
+      opacity: 0;
+      transition: opacity 160ms;
+    }
+    .cursor-click .ripple {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(180deg,#fff,#f3f4f6);
+      border: 1px solid rgba(15,23,42,0.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 12px 36px rgba(2,6,23,0.12);
+      transform: scale(.6);
+      opacity: 0.98;
+    }
+    .cursor-click.play {
+      animation: clickPop 420ms ease-out forwards;
+      opacity: 1;
+    }
+    @keyframes clickPop {
+      0%   { transform: translate3d(-50%,-50%,0) scale(.6); opacity: 1; filter: blur(0px); }
+      45%  { transform: translate3d(-50%,-50%,0) scale(1.15); opacity: 1; filter: blur(0px); }
+      100% { transform: translate3d(-50%,-50%,0) scale(1.5); opacity: 0; filter: blur(4px); }
+    }
+
+    /* NEW: make click-here.png hover above buttons */
+    .btn {
+      position: relative;            /* allow absolute hover image */
+      overflow: visible;
+      z-index: 0;
+    }
+    .btn .hover-img {
+      position: absolute;
+      left: 50%;
+      top: -10px;                    /* sits slightly above the button */
+      transform: translate(-50%, -8px) scale(0.96);
+      width: 140px;
+      height: auto;
+      pointer-events: none;          /* clicks pass through to the button */
+      opacity: 0;
+      transition: opacity 180ms ease, transform 220ms cubic-bezier(.2,.9,.2,1);
+      z-index: 9999;
+      filter: drop-shadow(0 10px 30px rgba(2,6,23,0.12));
+    }
+    .btn:hover .hover-img,
+    .btn:focus .hover-img,
+    .custom-cursor.pointer + .btn .hover-img { /* fallback; mostly use :hover / focus */
+      opacity: 1;
+      transform: translate(-50%, -16px) scale(1);
+    }
+
+    /* button image style when replacing .btn content (kept for compatibility) */
+    .btn-img {
+      display: block;
+      width: 140px;
+      height: auto;
+      max-height: 44px;
+      object-fit: contain;
+      pointer-events: none; /* keep the element clickable via parent */
+    }
+
+    /* subtle fade when cursor is inactive (e.g., leaving window) */
+    .custom-cursor.inactive { opacity: 0; }
+
+    /* accessibility: show default focus outline for keyboard users by toggling class when tabbing */
+    :root.keyboard-nav *:focus { outline: 3px solid rgba(99,102,241,0.18); outline-offset: 3px; }
+  </style>
+
+  <div class="custom-cursor" id="customCursor" aria-hidden="true">
+    <!-- using your SVG file placed in the same folder -->
+    <img src="./mouse-circle-svgrepo-com.svg" alt="cursor" class="cursor-img" aria-hidden="true" loading="lazy">
+  </div>
+
+  <div class="cursor-click" id="cursorClick" aria-hidden="true">
+    <div class="ripple" id="cursorRipple" aria-hidden="true">
+      <!-- small hand inside ripple -->
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 11V6a1 1 0 1 1 2 0v5" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6 13v3a4 4 0 0 0 8 0V9" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+
+
+  <script>
+    (function(){
+      if ('ontouchstart' in window) return; // disable on touch devices
+
+      const cursor = document.getElementById('customCursor');
+      const clickEl = document.getElementById('cursorClick');
+      let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+      let posX = mouseX, posY = mouseY;
+      let raf = null;
+      let inactiveTimer = null;
+
+      // Smooth follow
+      function render() {
+        posX += (mouseX - posX) * 0.18;
+        posY += (mouseY - posY) * 0.18;
+        cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+        clickEl.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+        raf = requestAnimationFrame(render);
+      }
+      raf = requestAnimationFrame(render);
+
+      // move
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // show cursor when moving
+        cursor.classList.remove('inactive');
+        clearTimeout(inactiveTimer);
+        inactiveTimer = setTimeout(()=> cursor.classList.add('inactive'), 1800);
+      });
+
+      // hide when leaving window
+      window.addEventListener('mouseleave', () => cursor.classList.add('inactive'));
+      window.addEventListener('mouseenter', () => cursor.classList.remove('inactive'));
+
+      // interactive selector: elements that should show hand (pointer state)
+      const interactiveSelector = 'a, button, input, textarea, select, label, .btn, .social-btn, [role="button"], [onclick]';
+      // add listeners to toggle pointer state
+      function addPointerListeners(root=document){
+        root.querySelectorAll(interactiveSelector).forEach(el => {
+          // avoid double-binding
+          if (el.__cursorBound) return;
+          el.__cursorBound = true;
+          el.addEventListener('mouseenter', () => cursor.classList.add('pointer'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('pointer'));
+          el.addEventListener('focus', () => { document.documentElement.classList.add('keyboard-nav'); cursor.classList.remove('pointer'); });
+          el.addEventListener('blur', () => { document.documentElement.classList.remove('keyboard-nav'); });
+        });
+      }
+      addPointerListeners();
+
+      // when dynamic content is added later, observe
+      const mo = new MutationObserver(() => addPointerListeners());
+      mo.observe(document.body, { childList: true, subtree: true });
+
+      // click animation
+      window.addEventListener('mousedown', (e) => {
+        // position immediately
+        mouseX = e.clientX; mouseY = e.clientY;
+        clickEl.style.left = `${mouseX}px`;
+        clickEl.style.top = `${mouseY}px`;
+        clickEl.classList.remove('play');
+        // force reflow
+        void clickEl.offsetWidth;
+        clickEl.classList.add('play');
+      });
+
+      // keyboard navigation support: show native focus styles and hide custom cursor while tabbing
+      let lastInteraction = 'mouse';
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          lastInteraction = 'keyboard';
+          document.documentElement.classList.add('keyboard-nav');
+          cursor.style.opacity = 0;
+        }
+      });
+      window.addEventListener('mousedown', () => {
+        lastInteraction = 'mouse';
+        document.documentElement.classList.remove('keyboard-nav');
+        cursor.style.opacity = 1;
+      });
+
+      // NEW: attach hover-image (click-here.png) to each .btn without removing content
+      function attachHoverImages() {
+        document.querySelectorAll('.btn').forEach(btn => {
+          if (btn.querySelector('.hover-img')) return; // already attached
+          const alt = btn.getAttribute('aria-label') || btn.getAttribute('title') || 'Click here';
+          const img = document.createElement('img');
+          img.src = './click-here.png';
+          img.alt = alt;
+          img.className = 'hover-img';
+          img.loading = 'lazy';
+          btn.appendChild(img);
+
+          // small accessibility: ensure keyboard users see it on focus
+          btn.addEventListener('focus', () => img.style.opacity = '1', true);
+          btn.addEventListener('blur', () => img.style.opacity = '', true);
+        });
+      }
+
+      // run after DOM ready and whenever mutations happen
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attachHoverImages);
+      } else {
+        attachHoverImages();
+      }
+      mo.observe(document.body, { childList: true, subtree: true });
+
+      // cleanup on unload
+      window.addEventListener('beforeunload', () => {
+        cancelAnimationFrame(raf);
+        mo.disconnect();
+      });
+    })();
+  </script>
+
+
 </head>
 <body class="bg-white text-gray-900">
   <div class="animated-bg">
@@ -121,18 +517,75 @@
   </header>
 
   <!-- Hero -->
-  <section class="text-center py-24 bg-gradient-to-b from-gray-100 to-white">
+  <!-- <section class="text-center py-24 bg-gradient-to-b from-gray-100 to-white">
     <h1 class="text-5xl font-semibold leading-tight">Hi, I’m Devendra Pillay</h1>
     <p class="text-xl text-gray-600 mt-4">Full-Stack Engineer | Telecom Domain | Automation Specialist </p>
+  </section> -->
+
+  <!-- Hero -->
+  <section class="text-center py-24 bg-gradient-to-b from-gray-100 to-white">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8">
+      <img src="1755623487382.jpg" alt="Devendra Pillay - profile" class="w-40 h-40 rounded-full shadow-lg object-cover border-4 border-white" loading="lazy">
+      <div>
+        <h1 class="text-5xl font-semibold leading-tight">Hi, I’m Devendra Pillay</h1>
+        <p class="text-xl text-gray-600 mt-4">SDE-1 | Telecom Domain | Automation Specialist </p>
+      </div>
+    </div>
   </section>
 
   <!-- Profile Section -->
-  <section id="profile" class="max-w-4xl mx-auto px-6 py-20 fade-up">
-    <h2 class="text-3xl font-semibold text-center mb-8">Profile</h2>
-    <p class="text-lg text-gray-800 leading-relaxed text-justify">
-      Results-driven Software Engineer with 4 years of experience in the telecom domain, progressing from a Quality Assurance Engineer to a Software Developer. Proven ability to bridge testing and development by ensuring reliability, scalability, and innovation across complex systems. Delivered measurable impact during QA tenure through automation, API testing, and system stability improvements, including a 40% reduction in production issues. Currently focused on designing and developing high-performance modules in C++ and Java for rating, charging, and online charging systems (OCS). Recognized for strong problem-solving skills, deep domain expertise, and cross-functional collaboration to deliver customer-centric and business-driven software solutions.
-    </p>
-  </section>
+<section id="profile" class="max-w-6xl mx-auto px-6 py-20 fade-up">
+  <h2 class="text-4xl font-bold text-center mb-16">Profile</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+    <!-- Group 1: Overview -->
+    <div class="bg-white shadow-lg rounded-2xl p-8 hover:shadow-2xl transition duration-300">
+      <div class="flex items-center mb-4">
+        <span class="text-3xl mr-3">💻</span>
+        <h3 class="text-2xl font-semibold">Overview</h3>
+      </div>
+      <p class="text-gray-700 leading-relaxed">
+        I am a seasoned software professional with extensive experience in development, production support, and delivery management. I specialize in designing, developing, debugging, and implementing high-quality code to meet business requirements and ensure seamless production operations.
+      </p>
+    </div>
+
+    <!-- Group 2: Production & Support -->
+    <div class="bg-white shadow-lg rounded-2xl p-8 hover:shadow-2xl transition duration-300">
+      <div class="flex items-center mb-4">
+        <span class="text-3xl mr-3">🛠️</span>
+        <h3 class="text-2xl font-semibold">Production & Support</h3>
+      </div>
+      <p class="text-gray-700 leading-relaxed">
+        I play a pivotal role in L3 support during production delivery days, proposing effective theories and workarounds in case of deployment issues and coordinating rollbacks when necessary to maintain system stability.
+      </p>
+    </div>
+
+    <!-- Group 3: Design & Planning -->
+    <div class="bg-white shadow-lg rounded-2xl p-8 hover:shadow-2xl transition duration-300">
+      <div class="flex items-center mb-4">
+        <span class="text-3xl mr-3">📐</span>
+        <h3 class="text-2xl font-semibold">Design & Planning</h3>
+      </div>
+      <p class="text-gray-700 leading-relaxed">
+        On the design front, I create detailed impact assessments, High-Level Designs (HLD), and Low-Level Designs (LLD) for development change requests, ensuring robust solutions and minimal operational risk. I also develop implementation plans for L2 teams to enable smooth patch release deployments.
+      </p>
+    </div>
+
+    <!-- Group 4: Additional Responsibilities & QA -->
+    <div class="bg-white shadow-lg rounded-2xl p-8 hover:shadow-2xl transition duration-300">
+      <div class="flex items-center mb-4">
+        <span class="text-3xl mr-3">⚡</span>
+        <h3 class="text-2xl font-semibold">Responsibilities & QA</h3>
+      </div>
+      <p class="text-gray-700 leading-relaxed">
+        I conduct client walkthroughs of HLDs, raise and manage Jira tasks and defects, check in code fixes efficiently, and create runbooks for stress testing. Additionally, I bring 4+ years of QA Automation experience, improving software quality and reliability through automated testing frameworks.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
   <!-- Highlights -->
   <section id="highlights" class="max-w-4xl mx-auto px-6 py-20 fade-up">
@@ -234,18 +687,59 @@
 
   <!-- Contact -->
   <section id="contact" class="py-12 px-6 fade-up">
-    <h2 class="text-2xl font-semibold text-center mb-4">Contact Me</h2>
-    <div class="flex justify-center space-x-6">
-      <a href="https://www.linkedin.com/in/devendra-pillay-812865157/" target="_blank" class="hover:opacity-70 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" class="w-6 h-6" alt="LinkedIn" />
-      </a>
-      <a href="https://github.com/codehunter03" target="_blank" class="hover:opacity-70 transition">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="w-6 h-6" alt="GitHub" />
-      </a>
-      <a href="mailto:pillaydevendra3@gmail.com" class="hover:opacity-70 transition">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" class="w-6 h-6" alt="Gmail" />
-      </a>
+    <h2 class="text-2xl font-semibold text-center mb-6">Contact Me</h2>
+
+    <!-- START: improved contact card -->
+    <div class="contact-wrapper px-4">
+      <div class="contact-card" role="region" aria-label="Contact information card">
+        <div class="contact-left">
+          <h3>Let's build something great together</h3>
+          <p>Open to new opportunities, collaborations and contract work. Quick responses — send a message or use the links to connect.</p>
+
+          <div class="contact-meta" aria-hidden="false">
+            <span class="meta-pill">SDE-1</span>
+            <span class="meta-pill">Telecom & Automation</span>
+            <span class="meta-pill">Remote / Onsite</span>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn" href="mailto:pillaydevendra3@gmail.com" id="mailtoBtn" title="Send email">✉️ Email me</a>
+            <button class="btn outline" id="copyEmailBtn" aria-label="Copy email to clipboard">📋 Copy</button>
+            <span id="copyFeedback" class="copy-feedback" aria-hidden="true">Copied ✓</span>
+          </div>
+
+          <p class="mt-4 text-sm text-gray-600">Prefer a quick intro? Send a short message with your timeframe and I'll respond within 24 hours.</p>
+        </div>
+
+        <div class="contact-right">
+          <div class="social-grid" role="list">
+            <a class="social-btn" href="https://www.linkedin.com/in/devendra-pillay-812865157/" target="_blank" rel="noopener" role="listitem">
+              <span class="social-icon" aria-hidden="true">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="" class="w-5 h-5"/>
+              </span>
+              <span>LinkedIn</span>
+            </a>
+            <a class="social-btn" href="https://github.com/codehunter03" target="_blank" rel="noopener" role="listitem">
+              <span class="social-icon" aria-hidden="true">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" class="w-5 h-5"/>
+              </span>
+              <span>GitHub</span>
+            </a>
+            <a class="social-btn" href="https://drive.google.com/uc?export=download&id=1QWkz" target="_blank" rel="noopener" role="listitem">
+              <span class="social-icon" aria-hidden="true">📄</span>
+              <span>Download CV</span>
+            </a>
+            <a class="social-btn" href="mailto:pillaydevendra3@gmail.com" role="listitem">
+              <span class="social-icon" aria-hidden="true">📧</span>
+              <span>pillaydevendra3@gmail.com</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-deco" aria-hidden="true"></div>
+      </div>
     </div>
+    <!-- END: improved contact card -->
   </section>
 
   <footer class="text-center text-sm text-gray-500 border-t py-4 mt-12">
@@ -253,7 +747,7 @@
   </footer>
 
   <!-- Script to populate data -->
-  <script>
+  <!-- <script>
     const data = {
       highlights: [
         "Automated 50% of manual test cases using Shell scripting & Ginger, reducing testing time by 40%.",
@@ -349,6 +843,147 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+  </script> -->
+ 
+  <script>
+    const data = {
+      highlights: [
+        "Career Transition from QA to Development: Successfully transitioned from a strong foundation in Quality Assurance to a full-fledged software development role, leveraging deep understanding of testing principles to build more robust, maintainable, and high-quality software.",
+        "AI-Powered Test Case Generation: Designed and implemented an in-house AI tool at Amdocs for automatic generation of test cases, significantly improving test coverage, reducing manual effort, and enhancing overall efficiency in the QA process.",
+        "Web Service Automation & Regression: Developed an automated framework in SoapUI for running web service regression tests without any prerequisites, enabling parallel and sequential execution of over 40 web services and eliminating dependencies on static environments and service ports.",
+        "Full Lifecycle Development & Testing Expertise: Demonstrated hands-on experience in both software development and QA, contributing to design, development, and testing of complex software systems with a focus on quality, reliability, and performance.",
+        "Innovation & Process Improvement: Known for implementing automation solutions that reduce manual effort, accelerate release cycles, and improve software reliability, bridging the gap between QA and development teams.",
+        "Tech Stack & Tools: Proficient in C/C++, Shell scripting, SoapUI, AI-based automation tools, and various development frameworks; strong command of Linux environments and modern software engineering practices."
+      ],
+      experience: [
+        {
+          role: "Software Developer",
+          company: "Amdocs | Pune, India",
+          period: "Jan 2025 – Present",
+          image: "./amdocs.png",
+          details: `
+            <ul class="list-disc list-inside space-y-1">
+              <li>Transitioned into a developer role within the same application team, leveraging in-depth domain knowledge of prepay systems.</li>
+              <li>Designing, developing, and enhancing modules for rating, charging, and OCS (Online Charging Systems) to improve performance and scalability.</li>
+              <li>Writing clean, optimized, and maintainable code in C++/Java, following OOP principles and design best practices.</li>
+              <li>Implementing automation utilities and scripts to streamline deployments and improve efficiency.</li>
+              <li>Collaborating with cross-functional teams to design new features and ensure seamless integration across systems.</li>
+              <li>Continuing to contribute to production stability by proactively resolving bugs and optimizing system performance.</li>
+            </ul>
+          `
+        },
+        {
+          role: "Functional Test Engineer (QA)",
+          company: "Amdocs | Pune, India",
+          period: "July 2021 – Dec 2024",
+          image: "./amdocs.png",
+          details: `
+            <ul class="list-disc list-inside space-y-1">
+              <li>Performed functional & configuration testing of prepay applications for EE-BT Group (Everything Everywhere).</li>
+              <li>Automated 50% of manual test cases using Shell scripting & Ginger, reducing testing time by 40%.</li>
+              <li>Led the testing effort for British Telecom’s Nexus payment gateway, executing high-volume test cases with a substantial reduction in production defects.</li>
+              <li>Conducted API testing (SOAP & REST) using ReadyAPI, improving test coverage and accelerating execution.</li>
+              <li>Debugged production incidents, executed RCA, and resolved defects within SLA, minimizing downtime.</li>
+              <li><strong>Tools:</strong> Oracle Enterprise Linux, HP-UX Unix, Oracle SQL Developer, Jira, Ginger, HP-QC, ReadyAPI, Shell Scripting, Groovy.</li>
+            </ul>
+          `
+        }
+      ],
+      education: [
+        {
+          degree: "M.Tech in Software Systems",
+          university: "BITS Pilani, RJ - 2025",
+          grade: "GOOD",
+          image: "./BITS.jpg"
+        },
+        {
+          degree: "B.E. in Electronics & Telecommunications",
+          university: "S.B. Jain Institute, Nagpur University - 2021",
+          grade: "8.8 CGPA",
+          image: "./SBJAIN.png"
+        }
+      ]
+    };
+
+    // Populate Work Experience
+    const experienceList = document.getElementById("experienceList");
+    data.experience.forEach(exp => {
+      const div = document.createElement("div");
+      div.className = "highlight-box flex items-start gap-4";
+      div.innerHTML = `
+        <img src="${exp.image || ''}" alt="${exp.company} logo" class="w-16 h-16 object-contain rounded-md p-1 bg-white/80 shadow-sm" loading="lazy" onerror="this.style.display='none'">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900">${exp.role}</h3>
+          <p class="text-sm text-gray-600 mb-2">${exp.company} | ${exp.period}</p>
+          <div class="text-gray-800">${exp.details}</div>
+        </div>
+      `;
+      experienceList.appendChild(div);
+    });
+
+    // Populate Career Highlights
+    const highlightList = document.getElementById("highlightList");
+    data.highlights.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      highlightList.appendChild(li);
+    });
+
+    // Populate Education
+    const educationList = document.getElementById("educationList");
+    data.education.forEach(edu => {
+      const div = document.createElement("div");
+      div.className = "highlight-box flex items-center gap-4";
+      div.innerHTML = `
+        <img src="${edu.image || ''}" alt="${edu.university} logo" class="w-20 h-20 object-contain rounded-md p-1 bg-white/80 shadow-sm" loading="lazy" onerror="this.style.display='none'">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900">${edu.degree}</h3>
+          <p class="text-gray-800">${edu.university}</p>
+          <p class="text-sm text-gray-600">${edu.grade}</p>
+        </div>
+      `;
+      educationList.appendChild(div);
+    });
+
+    // Scroll animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
   </script>
-</body>
+
+  <script>
+    // copy email action
+    (function(){
+      const copyBtn = document.getElementById('copyEmailBtn');
+      const feedback = document.getElementById('copyFeedback');
+      const email = 'pillaydevendra3@gmail.com';
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(email);
+            feedback.classList.add('show');
+            feedback.setAttribute('aria-hidden','false');
+            setTimeout(()=>{ feedback.classList.remove('show'); feedback.setAttribute('aria-hidden','true'); }, 2000);
+          } catch (e) {
+            // fallback
+            const ta = document.createElement('textarea');
+            ta.value = email;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            feedback.classList.add('show');
+            setTimeout(()=>{ feedback.classList.remove('show'); }, 2000);
+          }
+        });
+      }
+    })();
+  </script>
+
+
+  </body>
 </html>
