@@ -271,6 +271,76 @@
 
     /* Improve tap responsiveness */
     a, button, .btn, .social-btn { -webkit-tap-highlight-color: rgba(0,0,0,0.06); touch-action: manipulation; }
+    
+    /* NAV BUTTON STYLING: round hover, no underlines (desktop + mobile) */
+    header nav a,
+    #mobileMenu a,
+    .nav-btn {
+      text-decoration: none !important;
+      color: inherit;
+      padding: .4rem .75rem;
+      border-radius: 9999px; /* pill shape */
+      background: transparent;
+      transition: background-color .18s ease, color .18s ease, transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .18s;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      line-height: 1;
+      -webkit-tap-highlight-color: transparent;
+      border: 1px solid transparent;
+    }
+
+    /* Remove default anchor underline on all states */
+    header nav a,
+    #mobileMenu a { text-decoration: none !important; }
+
+    /* Hover / focus: dual-tone — black pill with white text and subtle lift */
+    header nav a:hover,
+    header nav a:focus,
+    #mobileMenu a:hover,
+    #mobileMenu a:focus,
+    .nav-btn:hover,
+    .nav-btn:focus {
+      background-color: #0b0b0b; /* black pill */
+      color: #ffffff !important; /* white text */
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(11,11,11,0.12);
+      outline: none;
+      text-decoration: none !important;
+    }
+
+    /* Keep Download CV prominent normally, but apply dual-tone on hover too */
+    header nav a[download],
+    #mobileMenu a[download],
+    .nav-btn[data-download="true"] {
+      color: #2563eb; /* blue link by default */
+      font-weight: 600;
+    }
+    header nav a[download]:hover,
+    #mobileMenu a[download]:hover,
+    .nav-btn[data-download="true"]:hover {
+      background-color: #0b0b0b;
+      color: #ffffff !important;
+      box-shadow: 0 10px 28px rgba(11,11,11,0.12);
+    }
+
+    /* Make mobile menu links occupy full width and keep pill appearance */
+    #mobileMenu a,
+    #mobileMenu .nav-btn {
+      display: block;
+      width: 100%;
+      padding-left: .75rem;
+      padding-right: .75rem;
+      border-radius: 12px;
+    }
+
+    /* Focus-visible for keyboard users */
+    header nav a:focus-visible,
+    #mobileMenu a:focus-visible,
+    .nav-btn:focus-visible {
+      outline: 3px solid rgba(99,102,241,0.18);
+      outline-offset: 4px;
+    }
   </style>
       
 
