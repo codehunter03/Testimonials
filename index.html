@@ -3,19 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Devendra Pillay</title>
+  <title>Devendra Pillay | Software Development Engineer</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-  
 
   <style>
-    
-    
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      cursor: none;
+      background: #0f0f0f;
+      color: #e5e7eb;
     }
+    
+    /* Dark Theme Color Palette */
+    :root {
+      --bg-primary: #0f0f0f;
+      --bg-secondary: #1a1a1a;
+      --bg-card: #1e1e1e;
+      --bg-card-hover: #252525;
+      --text-primary: #e5e7eb;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --border-color: #2a2a2a;
+      --accent-blue: #6366f1;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+    }
+
     .fade-up {
       opacity: 0;
       transform: translateY(20px);
@@ -25,6 +39,8 @@
       opacity: 1;
       transform: translateY(0);
     }
+    
+    /* Animated gradient background - matching the screenshot */
     .animated-bg {
       position: fixed;
       top: 0;
@@ -33,87 +49,80 @@
       height: 100vh;
       overflow: hidden;
       z-index: -1;
+      background: #1a1a1a;
     }
     .blob {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.6;
-      filter: blur(80px);
-      animation: moveBlobs 20s infinite ease-in-out;
+      opacity: 0.25;
+      filter: blur(120px);
+      animation: moveBlobs 25s infinite ease-in-out;
+      mix-blend-mode: screen;
     }
-    .blob1 {
-      width: 400px;
-      height: 400px;
-      background: #ff6b6b;
-      top: 10%;
-      left: 10%;
-    }
-    .blob2 {
-      width: 300px;
-      height: 300px;
-      background: #6bc1ff;
-      top: 50%;
-      left: 50%;
-    }
-    .blob3 {
-      width: 500px;
-      height: 500px;
-      background: #6bff95;
-      top: 30%;
-      left: 80%;
-    }
+    .blob1 { width: 800px; height: 800px; background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); top: 0%; left: -20%; animation-delay: 0s; }
+    .blob2 { width: 900px; height: 900px; background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); top: 20%; right: -10%; animation-delay: 5s; }
+    .blob3 { width: 1000px; height: 1000px; background: linear-gradient(135deg, #059669 0%, #047857 100%); bottom: -20%; right: -20%; animation-delay: 10s; }
     @keyframes moveBlobs {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(50px, 80px); }
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; }
+      33% { transform: translate(80px, -100px) scale(1.15); opacity: 0.3; }
+      66% { transform: translate(-60px, 80px) scale(0.95); opacity: 0.2; }
     }
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1s ease-out;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    
     .tag {
-      background-color: #e2e8f0;
-      color: #2d3748;
-      padding: 0.25rem 0.5rem;
+      background-color: rgba(99, 102, 241, 0.1);
+      color: #a5b4fc;
+      padding: 0.4rem 0.9rem;
       border-radius: 9999px;
       font-size: 0.875rem;
       margin: 0.25rem;
       display: inline-block;
+      font-weight: 500;
+      border: 1px solid rgba(99, 102, 241, 0.2);
     }
+    
     .highlight-box {
-      background-color: #ffffff;
-      border: 1px solid #e5e7eb;
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      backdrop-filter: blur(10px);
     }
     .highlight-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transform: translateY(-6px);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+      border-color: rgba(99, 102, 241, 0.3);
     }
-
-    /* New contact styles */
-    .contact-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
+    
+    .profile-card {
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(26, 26, 26, 0.8) 100%);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
     }
+    .profile-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+    
     .contact-card {
       position: relative;
       overflow: hidden;
-      border-radius: 1rem;
-      padding: 2rem;
+      border-radius: 1.25rem;
+      padding: 2.5rem;
       display: grid;
       grid-template-columns: 1fr 320px;
-      gap: 1.5rem;
+      gap: 2rem;
       align-items: center;
-      background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(56,189,248,0.04));
-      border: 1px solid rgba(99,102,241,0.08);
-      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(56,189,248,0.05) 100%);
+      border: 1px solid rgba(99,102,241,0.2);
+      box-shadow: 0 10px 40px rgba(99, 102, 241, 0.1);
+      backdrop-filter: blur(10px);
     }
     .contact-deco {
       position: absolute;
@@ -121,16 +130,11 @@
       bottom: -60px;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.12), transparent 40%),
-                  radial-gradient(circle at 70% 70%, rgba(56,189,248,0.10), transparent 35%);
+      background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.15), transparent 40%),
+                  radial-gradient(circle at 70% 70%, rgba(56,189,248,0.12), transparent 35%);
       transform: rotate(20deg);
       pointer-events: none;
     }
-    .contact-left h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.25rem;
-    }
-    .contact-left p { color: #374151; margin-bottom: 1rem; }
     .contact-meta {
       display: flex;
       gap: 0.75rem;
@@ -138,60 +142,72 @@
       margin-bottom: 1rem;
     }
     .meta-pill {
-      background: white;
+      background: rgba(99, 102, 241, 0.1);
       border-radius: 9999px;
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 0.9rem;
       font-weight: 600;
-      color: #1f2937;
+      color: #a5b4fc;
       display: inline-flex;
       gap: 0.5rem;
       align-items: center;
-      box-shadow: 0 4px 12px rgba(2,6,23,0.06);
-      border: 1px solid rgba(15,23,42,0.04);
-    }
-    .contact-actions {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-      margin-top: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border: 1px solid rgba(99, 102, 241, 0.2);
     }
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      padding: 0.6rem 0.9rem;
+      padding: 0.7rem 1.4rem;
       border-radius: 0.75rem;
-      background: linear-gradient(90deg,#6366f1,#06b6d4);
+      background: linear-gradient(90deg, #6366f1, #06b6d4);
       color: white;
       font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 8px 20px rgba(6,95,70,0.06);
       border: none;
       cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
     }
-    .btn.outline {
-      background: white;
-      color: #374151;
-      border: 1px solid rgba(15,23,42,0.06);
+    .btn:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    }
+    .btn.outline { 
+      background: transparent;
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.3);
       box-shadow: none;
     }
+    .btn.outline:hover {
+      background: rgba(99, 102, 241, 0.1);
+      border-color: rgba(99, 102, 241, 0.5);
+    }
+    
     .social-grid {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.7rem;
     }
     .social-btn {
       display: flex;
       gap: 0.75rem;
       align-items: center;
-      background: white;
-      padding: 0.6rem 0.8rem;
+      background: rgba(30, 30, 30, 0.6);
+      padding: 0.7rem 1rem;
       border-radius: 0.75rem;
-      border: 1px solid rgba(15,23,42,0.04);
-      box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       text-decoration: none;
-      color: #111827;
+      color: var(--text-primary);
       font-weight: 600;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    .social-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(99, 102, 241, 0.1);
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.2);
     }
     .social-icon {
       width: 28px;
@@ -200,12 +216,12 @@
       align-items: center;
       justify-content: center;
       border-radius: 0.5rem;
-      background: linear-gradient(180deg, rgba(99,102,241,0.12), rgba(56,189,248,0.08));
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(56,189,248,0.15));
     }
     .copy-feedback {
       display: inline-block;
       margin-left: 0.5rem;
-      color: #16a34a;
+      color: #10b981;
       font-weight: 700;
       opacity: 0;
       transform: translateY(-4px);
@@ -215,148 +231,94 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-    @media (max-width: 780px) {
-      .contact-card { grid-template-columns: 1fr; padding: 1.25rem; }
-      .contact-deco { display: none; }
-    }
-
-     /* MOBILE / RESPONSIVE FIXES */
-    /* Improve readability and touch behavior on small screens */
-    @media (max-width: 880px) {
-      html { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-      /* hide heavy backgrounds/animations for performance */
-      .animated-bg, .blob, .contact-deco { display: none !important; }
-
-      /* containers & padding */
-      .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-        box-sizing: border-box;
-        width: 100%;
-      }
-
-      /* Hero sizing and stacking */
-      .text-5xl { font-size: 2.25rem !important; line-height: 1.05 !important; }
-      .text-xl  { font-size: 1rem !important; }
-      .hero .max-w-4xl, .max-w-4xl.mx-auto { padding-top: 1rem; padding-bottom: 1rem; }
-
-      /* Make grids single-column where needed */
-      .grid.md\\:grid-cols-2, .grid.md\\:grid-cols-2 > * { grid-template-columns: 1fr !important; }
-      .grid.md\\:grid-cols-2 { gap: 1rem !important; }
-
-      /* Contact / cards */
-      .contact-card { grid-template-columns: 1fr !important; padding: 1rem !important; gap: 1rem !important; }
-      .contact-actions { flex-direction: column; align-items: stretch; gap: .6rem; }
-      .social-grid { flex-direction: row; flex-wrap: wrap; gap: .5rem; }
-
-      /* Buttons / tappable area */
-      .btn, .social-btn { min-height: 44px; padding: .6rem .8rem; font-size: 0.95rem; }
-      .btn .hover-img { display: none !important; } /* hide hover image on touch devices */
-
-      /* Reduce padding for highlight cards */
-      .highlight-box { padding: 1rem !important; }
-
-      /* Hide custom cursor visuals on small (safety, some browsers) */
-      .custom-cursor, .cursor-click { display: none !important; }
-    }
-
-    /* Extra small phones */
-    @media (max-width: 420px) {
-      .text-5xl { font-size: 1.9rem !important; }
-      .text-4xl { font-size: 1.6rem !important; }
-      .tag { padding: .2rem .45rem; font-size: .78rem; }
-      .contact-card { padding: .85rem !important; }
-    }
-
-    /* Improve tap responsiveness */
-    a, button, .btn, .social-btn { -webkit-tap-highlight-color: rgba(0,0,0,0.06); touch-action: manipulation; }
     
-    /* NAV BUTTON STYLING: round hover, no underlines (desktop + mobile) */
-    header nav a,
-    #mobileMenu a,
-    .nav-btn {
-      text-decoration: none !important;
-      color: inherit;
-      padding: .4rem .75rem;
-      border-radius: 9999px; /* pill shape */
-      background: transparent;
-      transition: background-color .18s ease, color .18s ease, transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .18s;
-      display: inline-flex;
+    /* Header styles */
+    header {
+      background: rgba(15, 15, 15, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    /* Hero section */
+    .hero-section {
+      background: linear-gradient(180deg, rgba(15, 15, 15, 0.95) 0%, rgba(26, 26, 26, 0.8) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.1), transparent 60%);
+      pointer-events: none;
+    }
+    
+    /* Profile image with glow effect */
+    .profile-img-wrapper {
+      position: relative;
+    }
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2),
+                  0 0 40px rgba(99, 102, 241, 0.3),
+                  0 8px 32px rgba(0, 0, 0, 0.6);
+      object-fit: cover;
+      border: 4px solid rgba(99, 102, 241, 0.1);
+      background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+      display: flex;
       align-items: center;
-      gap: .4rem;
-      line-height: 1;
-      -webkit-tap-highlight-color: transparent;
-      border: 1px solid transparent;
+      justify-content: center;
+      color: white;
+      font-size: 4rem;
+      font-weight: bold;
     }
-
-    /* Remove default anchor underline on all states */
-    header nav a,
-    #mobileMenu a { text-decoration: none !important; }
-
-    /* Hover / focus: dual-tone — black pill with white text and subtle lift */
-    header nav a:hover,
-    header nav a:focus,
-    #mobileMenu a:hover,
-    #mobileMenu a:focus,
-    .nav-btn:hover,
-    .nav-btn:focus {
-      background-color: #0b0b0b; /* black pill */
-      color: #ffffff !important; /* white text */
-      transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(11,11,11,0.12);
-      outline: none;
-      text-decoration: none !important;
+    
+    /* Section headers */
+    .section-header {
+      color: var(--text-primary);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
     }
-
-    /* Keep Download CV prominent normally, but apply dual-tone on hover too */
-    header nav a[download],
-    #mobileMenu a[download],
-    .nav-btn[data-download="true"] {
-      color: #2563eb; /* blue link by default */
-      font-weight: 600;
+    .section-header::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, #6366f1, #06b6d4);
+      border-radius: 2px;
     }
-    header nav a[download]:hover,
-    #mobileMenu a[download]:hover,
-    .nav-btn[data-download="true"]:hover {
-      background-color: #0b0b0b;
-      color: #ffffff !important;
-      box-shadow: 0 10px 28px rgba(11,11,11,0.12);
+    
+    /* Skills section */
+    .skills-section {
+      background: rgba(26, 26, 26, 0.5);
+      backdrop-filter: blur(10px);
     }
-
-    /* Make mobile menu links occupy full width and keep pill appearance */
-    #mobileMenu a,
-    #mobileMenu .nav-btn {
-      display: block;
-      width: 100%;
-      padding-left: .75rem;
-      padding-right: .75rem;
-      border-radius: 12px;
+    
+    .skill-card {
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-top: 3px solid #6366f1;
+      transition: all 0.3s ease;
     }
-
-    /* Focus-visible for keyboard users */
-    header nav a:focus-visible,
-    #mobileMenu a:focus-visible,
-    .nav-btn:focus-visible {
-      outline: 3px solid rgba(99,102,241,0.18);
-      outline-offset: 4px;
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-top-color: #06b6d4;
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
     }
-  </style>
-      
-
-  </style>
-
-  
-  <!-- Custom cursor: arrow + hand click animation -->
-
-  <style>
-    /* disable on touch devices */
-    @media (pointer: coarse) { .custom-cursor, .cursor-click { display: none !important; } }
-
-    /* hide native cursor */
-    body { cursor: none; }
-
-    /* cursor container */
+    
+    /* Custom Cursor */
     .custom-cursor {
       position: fixed;
       left: 0;
@@ -367,38 +329,12 @@
       z-index: 99999;
       transform: translate3d(-50%, -50%, 0);
       transition: transform 120ms cubic-bezier(.2,.9,.2,1), opacity 120ms;
-      will-change: transform, opacity;
-      mix-blend-mode: normal;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.98;
-      filter: drop-shadow(0 4px 10px rgba(2,6,23,0.18));
     }
-
-    /* new: use provided svg file as cursor */
-    .custom-cursor .cursor-img {
-      display: block;
-      width: 44px;
+    .custom-cursor .cursor-img { 
+      width: 44px; 
       height: 44px;
-      object-fit: contain;
-      transform-origin: center;
-      pointer-events: none;
+      filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.6));
     }
-
-    /* pointer state: scale up the cursor svg */
-    .custom-cursor.pointer {
-      width: 56px;
-      height: 56px;
-    }
-    .custom-cursor.pointer .cursor-img {
-      width: 56px;
-      height: 56px;
-      transform: scale(1.06);
-      filter: drop-shadow(0 8px 18px rgba(6,95,70,0.08));
-    }
-
-    /* click ripple / hand-click float (unchanged) */
     .cursor-click {
       position: fixed;
       left: 0;
@@ -409,764 +345,406 @@
       z-index: 99998;
       transform: translate3d(-50%, -50%, 0);
       opacity: 0;
-      transition: opacity 160ms;
     }
-    .cursor-click .ripple {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: linear-gradient(180deg,#fff,#f3f4f6);
-      border: 1px solid rgba(15,23,42,0.06);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow: 0 12px 36px rgba(2,6,23,0.12);
-      transform: scale(.6);
-      opacity: 0.98;
-    }
-    .cursor-click.play {
-      animation: clickPop 420ms ease-out forwards;
-      opacity: 1;
-    }
+    .cursor-click.play { animation: clickPop 420ms ease-out forwards; opacity: 1; }
     @keyframes clickPop {
-      0%   { transform: translate3d(-50%,-50%,0) scale(.6); opacity: 1; filter: blur(0px); }
-      45%  { transform: translate3d(-50%,-50%,0) scale(1.15); opacity: 1; filter: blur(0px); }
-      100% { transform: translate3d(-50%,-50%,0) scale(1.5); opacity: 0; filter: blur(4px); }
+      0% { transform: translate3d(-50%,-50%,0) scale(.6); opacity: 1; }
+      100% { transform: translate3d(-50%,-50%,0) scale(1.5); opacity: 0; }
     }
 
-    /* NEW: make click-here.png hover above buttons */
-    .btn {
-      position: relative;            /* allow absolute hover image */
-      overflow: visible;
-      z-index: 0;
+    /* Navigation styling */
+    header nav a {
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      transition: all 0.2s;
+      color: var(--text-secondary);
     }
-    .btn .hover-img {
-      position: absolute;
-      left: 50%;
-      top: -10px;                    /* sits slightly above the button */
-      transform: translate(-50%, -8px) scale(0.96);
-      width: 140px;
-      height: auto;
-      pointer-events: none;          /* clicks pass through to the button */
-      opacity: 0;
-      transition: opacity 180ms ease, transform 220ms cubic-bezier(.2,.9,.2,1);
-      z-index: 9999;
-      filter: drop-shadow(0 10px 30px rgba(2,6,23,0.12));
+    header nav a:hover {
+      background-color: rgba(99, 102, 241, 0.15);
+      color: var(--text-primary);
+      transform: translateY(-2px);
     }
-    .btn:hover .hover-img,
-    .btn:focus .hover-img,
-    .custom-cursor.pointer + .btn .hover-img { /* fallback; mostly use :hover / focus */
-      opacity: 1;
-      transform: translate(-50%, -16px) scale(1);
+    header nav a.active {
+      color: #a5b4fc;
     }
 
-    /* button image style when replacing .btn content (kept for compatibility) */
-    .btn-img {
-      display: block;
-      width: 140px;
-      height: auto;
-      max-height: 44px;
-      object-fit: contain;
-      pointer-events: none; /* keep the element clickable via parent */
+    /* Experience subsection headers */
+    .exp-subsection h4 {
+      color: #a5b4fc;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .exp-subsection h4::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(180deg, #6366f1, #06b6d4);
+      border-radius: 2px;
     }
 
-    /* subtle fade when cursor is inactive (e.g., leaving window) */
-    .custom-cursor.inactive { opacity: 0; }
-
-    /* accessibility: show default focus outline for keyboard users by toggling class when tabbing */
-    :root.keyboard-nav *:focus { outline: 3px solid rgba(99,102,241,0.18); outline-offset: 3px; }
-
-
+    @media (max-width: 780px) {
+      .contact-card { grid-template-columns: 1fr; padding: 1.5rem; }
+      .contact-deco { display: none; }
+      body { cursor: auto; }
+      .custom-cursor, .cursor-click { display: none; }
+      .animated-bg .blob { opacity: 0.08; }
+      .text-5xl { font-size: 2.25rem; }
+      .grid.md\\:grid-cols-2 { grid-template-columns: 1fr; }
+      .grid.lg\\:grid-cols-3 { grid-template-columns: 1fr; }
+      .profile-img { width: 120px; height: 120px; font-size: 3rem; }
+    }
   </style>
-
-  <div class="custom-cursor" id="customCursor" aria-hidden="true">
-    <!-- using your SVG file placed in the same folder -->
-    <img src="./mouse-circle-svgrepo-com.svg" alt="cursor" class="cursor-img" aria-hidden="true" loading="lazy">
-  </div>
-
-  <div class="cursor-click" id="cursorClick" aria-hidden="true">
-    <div class="ripple" id="cursorRipple" aria-hidden="true">
-      <!-- small hand inside ripple -->
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M8 11V6a1 1 0 1 1 2 0v5" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M6 13v3a4 4 0 0 0 8 0V9" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-  </div>
-
-
-  <script>
-    (function(){
-      if ('ontouchstart' in window) return; // disable on touch devices
-
-      const cursor = document.getElementById('customCursor');
-      const clickEl = document.getElementById('cursorClick');
-      let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-      let posX = mouseX, posY = mouseY;
-      let raf = null;
-      let inactiveTimer = null;
-
-      // Smooth follow
-      function render() {
-        posX += (mouseX - posX) * 0.18;
-        posY += (mouseY - posY) * 0.18;
-        cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-        clickEl.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-        raf = requestAnimationFrame(render);
-      }
-      raf = requestAnimationFrame(render);
-
-      // move
-      window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        // show cursor when moving
-        cursor.classList.remove('inactive');
-        clearTimeout(inactiveTimer);
-        inactiveTimer = setTimeout(()=> cursor.classList.add('inactive'), 1800);
-      });
-
-      // hide when leaving window
-      window.addEventListener('mouseleave', () => cursor.classList.add('inactive'));
-      window.addEventListener('mouseenter', () => cursor.classList.remove('inactive'));
-
-      // interactive selector: elements that should show hand (pointer state)
-      const interactiveSelector = 'a, button, input, textarea, select, label, .btn, .social-btn, [role="button"], [onclick]';
-      // add listeners to toggle pointer state
-      function addPointerListeners(root=document){
-        root.querySelectorAll(interactiveSelector).forEach(el => {
-          // avoid double-binding
-          if (el.__cursorBound) return;
-          el.__cursorBound = true;
-          el.addEventListener('mouseenter', () => cursor.classList.add('pointer'));
-          el.addEventListener('mouseleave', () => cursor.classList.remove('pointer'));
-          el.addEventListener('focus', () => { document.documentElement.classList.add('keyboard-nav'); cursor.classList.remove('pointer'); });
-          el.addEventListener('blur', () => { document.documentElement.classList.remove('keyboard-nav'); });
-        });
-      }
-      addPointerListeners();
-
-      // when dynamic content is added later, observe
-      const mo = new MutationObserver(() => addPointerListeners());
-      mo.observe(document.body, { childList: true, subtree: true });
-
-      // click animation
-      window.addEventListener('mousedown', (e) => {
-        // position immediately
-        mouseX = e.clientX; mouseY = e.clientY;
-        clickEl.style.left = `${mouseX}px`;
-        clickEl.style.top = `${mouseY}px`;
-        clickEl.classList.remove('play');
-        // force reflow
-        void clickEl.offsetWidth;
-        clickEl.classList.add('play');
-      });
-
-      // keyboard navigation support: show native focus styles and hide custom cursor while tabbing
-      let lastInteraction = 'mouse';
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') {
-          lastInteraction = 'keyboard';
-          document.documentElement.classList.add('keyboard-nav');
-          cursor.style.opacity = 0;
-        }
-      });
-      window.addEventListener('mousedown', () => {
-        lastInteraction = 'mouse';
-        document.documentElement.classList.remove('keyboard-nav');
-        cursor.style.opacity = 1;
-      });
-
-      // NEW: attach hover-image (click-here.png) to each .btn without removing content
-      function attachHoverImages() {
-        document.querySelectorAll('.btn').forEach(btn => {
-          if (btn.querySelector('.hover-img')) return; // already attached
-          const alt = btn.getAttribute('aria-label') || btn.getAttribute('title') || 'Click here';
-          const img = document.createElement('img');
-          img.src = './click-here.png';
-          img.alt = alt;
-          img.className = 'hover-img';
-          img.loading = 'lazy';
-          btn.appendChild(img);
-
-          // small accessibility: ensure keyboard users see it on focus
-          btn.addEventListener('focus', () => img.style.opacity = '1', true);
-          btn.addEventListener('blur', () => img.style.opacity = '', true);
-        });
-      }
-
-      // run after DOM ready and whenever mutations happen
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', attachHoverImages);
-      } else {
-        attachHoverImages();
-      }
-      mo.observe(document.body, { childList: true, subtree: true });
-
-      // cleanup on unload
-      window.addEventListener('beforeunload', () => {
-        cancelAnimationFrame(raf);
-        mo.disconnect();
-      });
-    })();
-  </script>
-
-
 </head>
-<body class="bg-white text-gray-900">
+
+<body>
   <div class="animated-bg">
     <div class="blob blob1"></div>
     <div class="blob blob2"></div>
     <div class="blob blob3"></div>
   </div>
 
-  <!-- Header -->
- 
-<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <div class="text-xl font-semibold">Devendra Pillay</div>
-
-    <!-- Desktop nav (hidden on small screens) -->
-    <nav id="mainNav" class="hidden md:flex space-x-6 text-sm font-medium" aria-label="Primary">
-      <a href="#highlights" class="hover:underline">Highlights</a>
-      <a href="#skills" class="hover:underline">Skills</a>
-      <a href="#experience" class="hover:underline">Experience</a>
-      <a href="#education" class="hover:underline">Education</a>
-      <a href="#contact" class="hover:underline">Contact</a>
-      <a href="https://github.com/codehunter03/Testimonials/blob/main/Devendra_Pillay_3899.pdf" download class="text-blue-600 hover:underline">
-        📥 Download CV
-      </a>
-    </nav>
-
-    <!-- Mobile toggle (visible on small screens) -->
-    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-300" aria-label="Toggle menu" aria-expanded="false">
-      <!-- hamburger icon -->
-      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"></path>
-      </svg>
-    </button>
+  <div class="custom-cursor" id="customCursor" aria-hidden="true">
+    <svg class="cursor-img" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 8v8m-4-4h8"/>
+    </svg>
+  </div>
+  <div class="cursor-click" id="cursorClick" aria-hidden="true">
+    <div style="width:40px;height:40px;border-radius:12px;background:rgba(99,102,241,0.2);border:2px solid rgba(99,102,241,0.4);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#6366f1"><path d="M8 11V6a1 1 0 1 1 2 0v5M6 13v3a4 4 0 0 0 8 0V9" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </div>
   </div>
 
-  <!-- Mobile menu (collapsed by default) -->
-  <div id="mobileMenu" class="md:hidden px-6 pb-4 hidden" aria-hidden="true">
-    <nav class="flex flex-col space-y-2 text-base font-medium" aria-label="Mobile">
-      <a href="#highlights" class="block py-2 hover:underline">Highlights</a>
-      <a href="#skills" class="block py-2 hover:underline">Skills</a>
-      <a href="#experience" class="block py-2 hover:underline">Experience</a>
-      <a href="#education" class="block py-2 hover:underline">Education</a>
-      <a href="#contact" class="block py-2 hover:underline">Contact</a>
-      <a href="https://github.com/codehunter03/Testimonials/blob/main/Devendra_Pillay_3899.pdf" download class="block py-2 text-blue-600 hover:underline">
-        📥 Download CV
-      </a>
-    </nav>
-  </div>
-</header>
+  <header class="sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="text-xl font-semibold text-white">Devendra Pillay</div>
+      <nav class="hidden md:flex space-x-2 text-sm font-medium">
+        <a href="#profile">Profile</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/codehunter03/Testimonials/blob/main/Devendra_Pillay_3899.pdf" download class="text-blue-400 font-bold">📥 CV</a>
+      </nav>
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-gray-800">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden px-6 pb-4 hidden">
+      <nav class="flex flex-col space-y-2">
+        <a href="#profile" class="py-2">Profile</a>
+        <a href="#skills" class="py-2">Skills</a>
+        <a href="#experience" class="py-2">Experience</a>
+        <a href="#education" class="py-2">Education</a>
+        <a href="#contact" class="py-2">Contact</a>
+        <a href="https://github.com/codehunter03/Testimonials/blob/main/Devendra_Pillay_3899.pdf" download class="py-2 text-blue-400">📥 Download CV</a>
+      </nav>
+    </div>
+  </header>
 
-<script>
-  // Mobile menu toggle: keeps desktop behaviour unchanged
-  (function(){
-    const btn = document.getElementById('mobileMenuBtn');
-    const menu = document.getElementById('mobileMenu');
-
-    if (!btn || !menu) return;
-
-    btn.addEventListener('click', () => {
-      const isOpen = !menu.classList.contains('hidden');
-      menu.classList.toggle('hidden', isOpen);
-      menu.setAttribute('aria-hidden', String(isOpen));
-      btn.setAttribute('aria-expanded', String(!isOpen));
-    });
-
-    // Close mobile menu when a link is clicked (improves UX)
-    menu.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') {
-        menu.classList.add('hidden');
-        menu.setAttribute('aria-hidden', 'true');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Ensure menu is hidden when resizing to desktop
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 768) {
-        menu.classList.add('hidden');
-        menu.setAttribute('aria-hidden', 'true');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  })();
-</script>
-
-
-  <!-- Hero -->
-  <!-- <section class="text-center py-24 bg-gradient-to-b from-gray-100 to-white">
-    <h1 class="text-5xl font-semibold leading-tight">Hi, I’m Devendra Pillay</h1>
-    <p class="text-xl text-gray-600 mt-4">Full-Stack Engineer | Telecom Domain | Automation Specialist </p>
-  </section> -->
-
-  <!-- Hero -->
-  <section class="text-center py-24 bg-gradient-to-b from-gray-100 to-white">
-    <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8">
-      <img src="1755623487382.jpg" alt="Devendra Pillay - profile" class="w-40 h-40 rounded-full shadow-lg object-cover border-4 border-white" loading="lazy">
-      <div>
-        <h1 class="text-5xl font-semibold leading-tight">Hi, I’m Devendra Pillay</h1>
-        <p class="text-xl text-gray-600 mt-4">SDE-1 | Telecom Domain | Automation Specialist </p>
+  <section class="hero-section text-center py-24 relative">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8 relative z-10">
+      <div class="profile-img-wrapper">
+        <img src="1755623487382.jpg" alt="Devendra Pillay" class="profile-img" style="font-size: 4rem;" onerror="this.style.display='flex'; this.innerHTML='DP';">
+      </div>
+      <div class="text-left">
+        <h1 class="text-5xl font-bold leading-tight text-white">Hi, I'm Devendra Pillay</h1>
+        <p class="text-xl text-gray-400 mt-4">Software Development Engineer | C++ & Unix Specialist | Telecom Domain</p>
+        <div class="mt-4">
+          <span class="tag">High-Level Design</span>
+          <span class="tag">Rating & Charging Systems</span>
+          <span class="tag">L3 Support</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Profile Section -->
-<section id="profile" class="max-w-6xl mx-auto px-6 py-20 fade-up">
-  <h2 class="text-4xl font-bold text-center mb-16">Profile</h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-
-    <!-- Group 1: Overview -->
-    <div class="bg-white shadow-lg rounded-2xl p-8 hover:shadow-2xl transition duration-300">
-      <div class="flex items-center mb-4">
-        <span class="text-3xl mr-3">💻</span>
-        <h3 class="text-2xl font-semibold">Overview</h3>
+  <section id="profile" class="max-w-6xl mx-auto px-6 py-20 fade-up">
+    <h2 class="text-4xl section-header text-center block w-full mb-16">Professional Profile</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="profile-card">
+        <div class="flex items-center mb-4">
+          <span class="text-4xl mr-3">💻</span>
+          <h3 class="text-2xl font-semibold text-white">Engineering Overview</h3>
+        </div>
+        <p class="text-gray-400 leading-relaxed">
+          I am a Software Developer specializing in the design and implementation of high-performance C/C++ applications for telecom prepay systems. I bridge the gap between business requirements and technical architecture, ensuring seamless production operations for mission-critical rating and charging modules.
+        </p>
       </div>
-      <p class="text-gray-700 leading-relaxed">
-        I am a seasoned software professional with extensive experience in development, production support, and delivery management. I specialize in designing, developing, debugging, and implementing high-quality code to meet business requirements and ensure seamless production operations.
-      </p>
-    </div>
 
-    <!-- Group 2: Production & Support -->
-    <div class="bg-white shadow-lg rounded-2xl p-8 hover:shadow-2xl transition duration-300">
-      <div class="flex items-center mb-4">
-        <span class="text-3xl mr-3">🛠️</span>
-        <h3 class="text-2xl font-semibold">Production & Support</h3>
+      <div class="profile-card">
+        <div class="flex items-center mb-4">
+          <span class="text-4xl mr-3">📐</span>
+          <h3 class="text-2xl font-semibold text-white">System Design & Architecture</h3>
+        </div>
+        <p class="text-gray-400 leading-relaxed">
+          Expert in creating detailed Impact Assessments, High-Level Designs (HLD), and Low-Level Designs (LLD). I lead technical walkthroughs for clients and develop comprehensive implementation plans to ensure zero-downtime deployments.
+        </p>
       </div>
-      <p class="text-gray-700 leading-relaxed">
-        I play a pivotal role in L3 support during production delivery days, proposing effective theories and workarounds in case of deployment issues and coordinating rollbacks when necessary to maintain system stability.
-      </p>
     </div>
-
-    <!-- Group 3: Design & Planning -->
-    <div class="bg-white shadow-lg rounded-2xl p-8 hover:shadow-2xl transition duration-300">
-      <div class="flex items-center mb-4">
-        <span class="text-3xl mr-3">📐</span>
-        <h3 class="text-2xl font-semibold">Design & Planning</h3>
-      </div>
-      <p class="text-gray-700 leading-relaxed">
-        On the design front, I create detailed impact assessments, High-Level Designs (HLD), and Low-Level Designs (LLD) for development change requests, ensuring robust solutions and minimal operational risk. I also develop implementation plans for L2 teams to enable smooth patch release deployments.
-      </p>
-    </div>
-
-    <!-- Group 4: Additional Responsibilities & QA -->
-    <div class="bg-white shadow-lg rounded-2xl p-8 hover:shadow-2xl transition duration-300">
-      <div class="flex items-center mb-4">
-        <span class="text-3xl mr-3">⚡</span>
-        <h3 class="text-2xl font-semibold">Responsibilities & QA</h3>
-      </div>
-      <p class="text-gray-700 leading-relaxed">
-        I conduct client walkthroughs of HLDs, raise and manage Jira tasks and defects, check in code fixes efficiently, and create runbooks for stress testing. Additionally, I bring 4+ years of QA Automation experience, improving software quality and reliability through automated testing frameworks.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-  <!-- Highlights -->
-  <section id="highlights" class="max-w-4xl mx-auto px-6 py-20 fade-up">
-    <h2 class="text-3xl font-semibold text-center mb-8">Career Highlights</h2>
-    <ul class="space-y-4 text-lg text-gray-800 list-disc list-inside" id="highlightList"></ul>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="bg-gray-50 py-20 px-6 fade-up">
-    <h2 class="text-3xl font-semibold text-center mb-8">Tools & Technologies</h2>
-    <div class="flex flex-wrap justify-center gap-3 mb-12" id="skillsList"></div>
-    <div class="flex flex-wrap justify-center gap-3 mb-12">
-      <span class="tag">C/C++</span>
-      <span class="tag">Design & Development</span>
-      <span class="tag">L3 Support</span>
-      <span class="tag">Functional Testing</span>
-      <span class="tag">API Testing (REST/SOAP)</span>
-      <span class="tag">Shell Scripting</span>
+  <section id="skills" class="skills-section py-20 px-6 fade-up">
+    <h2 class="text-3xl section-header text-center block w-full">Tools & Technologies</h2>
+    <div class="flex flex-wrap justify-center gap-3 mb-16 max-w-4xl mx-auto">
+      <span class="tag">C / C++</span>
+      <span class="tag">Shell Scripting (Bash/KSH)</span>
       <span class="tag">RHE-Linux</span>
-      <span class="tag">Web Automation</span>
       <span class="tag">Oracle SQL Developer</span>
-      <span class="tag">Jenkins</span>
-      <span class="tag">JIRA</span>
-      <span class="tag">HP-ALM</span>
-      
+      <span class="tag">Pro*C</span>
+      <span class="tag">Tuxedo</span>
+      <span class="tag">Socket Programming</span>
+      <span class="tag">JIRA & Problem Management</span>
+      <span class="tag">Jenkins CI/CD</span>
+      <span class="tag">REST/SOAP APIs</span>
     </div>
 
-    <!-- Key Skills Section -->
-  <div class="max-w-5xl mx-auto space-y-6">
-    <h3 class="text-2xl font-semibold text-center mb-4">Key Skills</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-800">
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Test Requirement Analysis and Stakeholder Communication</strong>
-        <p>Participating in client calls to gather and analyze requirements, plan testing strategies, and align with business objectives.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Agile Testing and SDLC Expertise</strong>
-        <p>Delivering updates in SCRUM, collaborating in Agile teams, and applying SDLC knowledge for quality deliverables.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Test Planning & Estimations</strong>
-        <p>Creating test plans, assessing change requests, and estimating efforts effectively.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Test Calendar & Scheduling</strong>
-        <p>Designing calendars for timely execution of scenarios, cases, steps, and suites.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">System, Component, & Regression Testing</strong>
-        <p>Executing thorough testing to ensure stability and performance.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Defect Tracking & Problem Management</strong>
-        <p>Using JIRA and QC for defect tracking and managing PMs for resolution.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Test Evidence & Reporting</strong>
-        <p>Creating comprehensive test evidence and exit reports for documentation.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Work Requests & Change Management</strong>
-        <p>Assessing and handling changes efficiently with updated strategies.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Environment Handling & Debugging</strong>
-        <p>Managing Linux environments, debugging, setting cron jobs, and ensuring cross-system reliability.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">API Testing</strong>
-        <p>Expert in ReadyAPI for SOAP/REST services testing and automation.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Telecom Rating, Charging & Prepay Systems</strong>
-        <p>Testing telecom rating modules and online charging systems (OCS).</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Web Automation Tools</strong>
-        <p>Using Ginger tool for automating web-based applications.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <strong class="block mb-1">Object-Oriented Programming and Data Structures</strong>
-        <p>Strong OOP fundamentals and DS knowledge for efficient problem solving.</p>
+    <div class="max-w-5xl mx-auto space-y-6">
+      <h3 class="text-2xl font-semibold text-center mb-8 text-white">Core Software Competencies</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="skill-card">
+          <strong class="block mb-2 text-lg text-white">System Design (HLD/LLD)</strong>
+          <p class="text-sm text-gray-400">Translating complex change requests into robust architectural designs with focus on low-latency telecom processing.</p>
+        </div>
+
+        <div class="skill-card">
+          <strong class="block mb-2 text-lg text-white">Backend Development</strong>
+          <p class="text-sm text-gray-400">Writing and optimizing C++ code for high-volume rating engines, utilizing efficient data structures and OOP principles.</p>
+        </div>
+
+        <div class="skill-card">
+          <strong class="block mb-2 text-lg text-white">L3 Engineering & RCA</strong>
+          <p class="text-sm text-gray-400">Managing complex production issues via Root Cause Analysis, hotfix implementation, and system performance tuning.</p>
+        </div>
+
+        <div class="skill-card">
+          <strong class="block mb-2 text-lg text-white">Technical Consultancy</strong>
+          <p class="text-sm text-gray-400">Leading client walkthroughs and acting as technical bridge between business stakeholders and dev teams.</p>
+        </div>
+
+        <div class="skill-card">
+          <strong class="block mb-2 text-lg text-white">Unix Automation</strong>
+          <p class="text-sm text-gray-400">Developing shell scripts for cron job management, environment health monitoring, and stress testing runbooks.</p>
+        </div>
+
+        <div class="skill-card">
+          <strong class="block mb-2 text-lg text-white">API Testing</strong>
+          <p class="text-sm text-gray-400">Expert in ReadyAPI for SOAP/REST services testing and automation.</p>
+        </div>
       </div>
     </div>
-  </div>
   </section>
 
-  <!-- Experience -->
   <section id="experience" class="max-w-4xl mx-auto px-6 py-20 fade-up">
-    <h2 class="text-3xl font-semibold text-center mb-8">Work Experience</h2>
-    <div id="experienceList" class="space-y-6"></div>
-  </section>
-
-  <!-- Education -->
-  <section id="education" class="bg-gray-50 py-20 px-6 fade-up">
-    <h2 class="text-3xl font-semibold text-center mb-8">Education</h2>
-    <div id="educationList" class="max-w-3xl mx-auto space-y-6"></div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-12 px-6 fade-up">
-    <h2 class="text-2xl font-semibold text-center mb-6">Contact Me</h2>
-
-    <!-- START: improved contact card -->
-    <div class="contact-wrapper px-4">
-      <div class="contact-card" role="region" aria-label="Contact information card">
-        <div class="contact-left">
-          <h3>Let's build something great together</h3>
-          <p>Open to new opportunities, collaborations and contract work. Quick responses — send a message or use the links to connect.</p>
-
-          <div class="contact-meta" aria-hidden="false">
-            <span class="meta-pill">SDE-1</span>
-            <span class="meta-pill">Telecom & Automation</span>
-            <span class="meta-pill">Remote / Onsite</span>
-          </div>
-
-          <div class="contact-actions">
-            <a class="btn" href="mailto:pillaydevendra3@gmail.com" id="mailtoBtn" title="Send email">✉️ Email me</a>
-            <button class="btn outline" id="copyEmailBtn" aria-label="Copy email to clipboard">📋 Copy</button>
-            <span id="copyFeedback" class="copy-feedback" aria-hidden="true">Copied ✓</span>
-          </div>
-
-          <p class="mt-4 text-sm text-gray-600">Prefer a quick intro? Send a short message with your timeframe and I'll respond within 24 hours.</p>
-        </div>
-
-        <div class="contact-right">
-          <div class="social-grid" role="list">
-            <a class="social-btn" href="https://www.linkedin.com/in/devendra-pillay-812865157/" target="_blank" rel="noopener" role="listitem">
-              <span class="social-icon" aria-hidden="true">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="" class="w-5 h-5"/>
-              </span>
-              <span>LinkedIn</span>
-            </a>
-            <a class="social-btn" href="https://github.com/codehunter03" target="_blank" rel="noopener" role="listitem">
-              <span class="social-icon" aria-hidden="true">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" class="w-5 h-5"/>
-              </span>
-              <span>GitHub</span>
-            </a>
-            <a class="social-btn" href="https://drive.google.com/uc?export=download&id=1QWkz" target="_blank" rel="noopener" role="listitem">
-              <span class="social-icon" aria-hidden="true">📄</span>
-              <span>Download CV</span>
-            </a>
-            <a class="social-btn" href="mailto:pillaydevendra3@gmail.com" role="listitem">
-              <span class="social-icon" aria-hidden="true">📧</span>
-              <span>pillaydevendra3@gmail.com</span>
-            </a>
+    <h2 class="text-3xl section-header text-center block w-full">Work Experience</h2>
+    <div class="space-y-6">
+      <div class="highlight-box">
+        <div class="flex items-start gap-4 mb-3">
+          <img src="amdocs.png" alt="Amdocs" class="w-16 h-16 object-contain rounded-lg p-2 bg-white/5" onerror="this.style.display='none';">
+          <div class="flex-1">
+            <h3 class="text-2xl font-semibold text-white">Software Developer</h3>
+            <p class="text-sm text-gray-500">Amdocs | Pune, India | Jan 2025 – Present</p>
           </div>
         </div>
+        
+        <div class="mb-5 exp-subsection">
+          <h4>System Design & Architecture</h4>
+          <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm ml-2">
+            <li>Translating complex change requests into robust High-Level Designs (HLD) and Low-Level Designs (LLD) with a focus on low-latency telecom processing for rating and charging systems</li>
+            <li>Creating detailed Impact Assessments to evaluate system-wide effects of proposed changes and minimize operational risk</li>
+            <li>Leading technical walkthroughs with clients to present design solutions and gather feedback</li>
+          </ul>
+        </div>
 
-        <div class="contact-deco" aria-hidden="true"></div>
+        <div class="mb-5 exp-subsection">
+          <h4>Backend Development</h4>
+          <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm ml-2">
+            <li>Writing and optimizing C++ and C code for high-volume rating engines, utilizing efficient data structures, algorithms, and OOP principles</li>
+            <li>Developing mission-critical modules for OCS (Online Charging Systems) with emphasis on performance, scalability, and fault tolerance</li>
+            <li>Implementing Pro*C embedded SQL for seamless database integration with Oracle systems</li>
+            <li>Working with Tuxedo middleware and socket programming for distributed transaction processing</li>
+          </ul>
+        </div>
+
+        <div class="mb-5 exp-subsection">
+          <h4>Problem Management & Technical Consultancy</h4>
+          <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm ml-2">
+            <li>Managing the full lifecycle of Jira tasks and defects from initial assessment to code check-in and deployment verification</li>
+            <li>Acting as technical bridge between business stakeholders and development teams, translating requirements into actionable technical solutions</li>
+            <li>Conducting client walkthroughs for change requests and providing expert guidance on system capabilities and limitations</li>
+          </ul>
+        </div>
+
+        <div class="mb-4 exp-subsection">
+          <h4>L3 Engineering Support & Root Cause Analysis</h4>
+          <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm ml-2">
+            <li>Managing complex production issues through detailed Root Cause Analysis (RCA), implementing hotfixes, and performing system performance tuning</li>
+            <li>Proposing effective theories and workarounds during deployment issues, coordinating rollbacks when necessary to maintain 99.9% system uptime</li>
+            <li>Debugging production incidents in real-time using core dumps, log analysis, and GDB for mission-critical prepay applications</li>
+          </ul>
+        </div>
+
+        <p class="text-sm text-gray-500 mt-4 pt-4 border-t border-gray-800"><strong class="text-gray-400">Tech Stack:</strong> C/C++, Pro*C, Shell Scripting (Bash/KSH), Oracle SQL Developer, Tuxedo, Socket Programming, Jenkins, JIRA, RHE-Linux, REST/SOAP APIs</p>
+      </div>
+
+      <div class="highlight-box">
+        <div class="flex items-start gap-4 mb-3">
+          <img src="amdocs.png" alt="Amdocs" class="w-16 h-16 object-contain rounded-lg p-2 bg-white/5" onerror="this.style.display='none';">
+          <div class="flex-1">
+            <h3 class="text-2xl font-semibold text-white">Functional Test Engineer (QA)</h3>
+            <p class="text-sm text-gray-500">Amdocs | Pune, India | July 2021 – Dec 2024</p>
+          </div>
+        </div>
+        <ul class="list-disc list-inside space-y-2 text-gray-400">
+          <li>Automated 50% of manual test cases using Shell scripting & Ginger, reducing testing time by 40%</li>
+          <li>Led testing for British Telecom's Nexus payment gateway with significant defect reduction</li>
+          <li>Conducted API testing (SOAP & REST) using ReadyAPI, improving test coverage and execution speed</li>
+          <li>Debugged production incidents, executed RCA, and resolved defects within SLA, minimizing downtime</li>
+          <li><strong class="text-gray-400">Tools:</strong> Oracle Enterprise Linux, HP-UX Unix, Oracle SQL Developer, Jira, Ginger, HP-QC, ReadyAPI, Shell Scripting, Groovy</li>
+        </ul>
       </div>
     </div>
-    <!-- END: improved contact card -->
   </section>
 
-  <footer class="text-center text-sm text-gray-500 border-t py-4 mt-12">
-    &copy; 2025 Devendra Pillay. All rights reserved.
+  <section id="education" class="skills-section py- px-8 fade-up">
+    <h2 class="text-3xl section-header text-center block w-full">Education</h2>
+    <div class="max-w-xl mx-auto space-y-6">
+      <div class="highlight-box">  
+        <div class="flex items-start gap-4 mb-3">
+          <img src="BITS.jpg" alt="BITS Pilani" class="w-16 h-16 object-contain rounded-lg p-2 bg-white/5" onerror="this.style.display='none';">
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-white">M.Tech in Software Systems</h3>
+            <p class="text-gray-300 text-sm">BITS Pilani, RJ - 2025</p>
+            <p class="text-sm text-gray-500 mt-1">GOOD</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="highlight-box">
+        <div class="flex items-start gap-4 mb-3">
+      <img src="SBJAIN.png" alt="S.B. Jain Institute" class="w-16 h-16 object-contain rounded-lg p-2 bg-white/5" onerror="this.style.display='none';">
+      <div class="flex-1">
+        <h3 class="text-xl font-semibold text-white">B.E. in Electronics & Telecommunications</h3>
+        <p class="text-gray-300 text-sm">S.B. Jain Institute, Nagpur University - 2021</p>
+        <p class="text-sm text-gray-500 mt-1">8.8 CGPA</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="max-w-5xl mx-auto px-6 py-20 fade-up">
+    <h2 class="text-2xl section-header text-center block w-full mb-8">Contact Me</h2>
+    <div class="contact-card">
+      <div>
+        <h3 class="text-xl font-bold mb-2 text-white">Let's build something great together</h3>
+        <p class="text-gray-400 mb-4">Open to new opportunities, collaborations and contract work. Quick responses — send a message or use the links to connect.</p>
+        
+        <div class="contact-meta">
+          <span class="meta-pill">SDE-1</span>
+          <span class="meta-pill">Telecom & Automation</span>
+          <span class="meta-pill">Remote / Onsite</span>
+        </div>
+
+        <div class="flex gap-3 items-center flex-wrap">
+          <a href="mailto:pillaydevendra3@gmail.com" class="btn">✉️ Email Me</a>
+          <button id="copyEmailBtn" class="btn outline">📋 Copy</button>
+          <span id="copyFeedback" class="copy-feedback">Copied ✓</span>
+        </div>
+      </div>
+
+      <div class="social-grid">
+        <a class="social-btn" href="https://www.linkedin.com/in/devendra-pillay-812865157/" target="_blank" rel="noopener">
+          <span class="social-icon">💼</span>
+          <span>LinkedIn</span>
+        </a>
+        <a class="social-btn" href="https://github.com/codehunter03" target="_blank" rel="noopener">
+          <span class="social-icon">👨‍💻</span>
+          <span>GitHub</span>
+        </a>
+        <a class="social-btn" href="mailto:pillaydevendra3@gmail.com">
+          <span class="social-icon">📧</span>
+          <span>Email</span>
+        </a>
+      </div>
+
+      <div class="contact-deco"></div>
+    </div>
+  </section>
+
+  <footer class="text-center text-sm text-gray-600 border-t border-gray-800 py-6 mt-12">
+    &copy; 2026 Devendra Pillay. All rights reserved.
   </footer>
 
-  <!-- Script to populate data -->
-  <!-- <script>
-    const data = {
-      highlights: [
-        "Automated 50% of manual test cases using Shell scripting & Ginger, reducing testing time by 40%.",
-        "Led testing for British Telecom's Nexus payment gateway, significantly reducing defects.",
-        "Resolved 95% of critical production incidents within SLA, reducing downtime by 30%.",
-        "Implemented API automation using ReadyAPI, improving test coverage and efficiency."
-      ],
-      experience: [
-        {
-          role: "Functional Test Engineer (QA)",
-          company: "Amdocs | Pune, India",
-          period: "July 2021 – Dec 2024",
-          details: `
-            <ul class="list-disc list-inside space-y-1">
-              <li>Performed functional & configuration testing of prepay applications for EE-BT Group (Everything Everywhere).</li>
-              <li>Automated 50% of manual test cases using Shell scripting & Ginger, reducing testing time by 40%.</li>
-              <li>Led the testing effort for British Telecom’s Nexus payment gateway, executing high-volume test cases with a substantial reduction in production defects.</li>
-              <li>Conducted API testing (SOAP & REST) using ReadyAPI, improving test coverage and accelerating execution.</li>
-              <li>Debugged production incidents, executed RCA, and resolved defects within SLA, minimizing downtime.</li>
-              <li><strong>Tools:</strong> Oracle Enterprise Linux, HP-UX Unix, Oracle SQL Developer, Jira, Ginger, HP-QC, ReadyAPI, Shell Scripting, Groovy.</li>
-            </ul>
-          `
-        },
-        {
-          role: "Software Developer",
-          company: "Amdocs | Pune, India",
-          period: "Jan 2025 – Present",
-          details: `
-            <ul class="list-disc list-inside space-y-1">
-              <li>Transitioned into a developer role within the same application team, leveraging in-depth domain knowledge of prepay systems.</li>
-              <li>Designing, developing, and enhancing modules for rating, charging, and OCS (Online Charging Systems) to improve performance and scalability.</li>
-              <li>Writing clean, optimized, and maintainable code in C++/Java, following OOP principles and design best practices.</li>
-              <li>Implementing automation utilities and scripts to streamline deployments and improve efficiency.</li>
-              <li>Collaborating with cross-functional teams to design new features and ensure seamless integration across systems.</li>
-              <li>Continuing to contribute to production stability by proactively resolving bugs and optimizing system performance.</li>
-            </ul>
-          `
-        }
-      ],
-      education: [
-        {
-          degree: "M.Tech in Software Systems",
-          university: "BITS Pilani, RJ - 2025",
-          grade: "GOOD"
-        },
-        {
-          degree: "B.E. in Electronics & Telecommunications",
-          university: "S.B. Jain Institute, Nagpur University - 2021",
-          grade: "8.8 CGPA"
-        }
-      ]
-    };
-
-    // Populate Work Experience
-    const experienceList = document.getElementById("experienceList");
-    data.experience.forEach(exp => {
-      const div = document.createElement("div");
-      div.className = "highlight-box";
-      div.innerHTML = `
-        <h3 class="text-xl font-semibold text-gray-900">${exp.role}</h3>
-        <p class="text-sm text-gray-600 mb-2">${exp.company} | ${exp.period}</p>
-        <div class="text-gray-800">${exp.details}</div>
-      `;
-      experienceList.appendChild(div);
-    });
-
-    // Populate Career Highlights
-    const highlightList = document.getElementById("highlightList");
-    data.highlights.forEach(item => {
-      const li = document.createElement("li");
-      li.textContent = item;
-      highlightList.appendChild(li);
-    });
-
-    // Populate Education
-    const educationList = document.getElementById("educationList");
-    data.education.forEach(edu => {
-      const div = document.createElement("div");
-      div.className = "highlight-box";
-      div.innerHTML = `
-        <h3 class="text-xl font-semibold text-gray-900">${edu.degree}</h3>
-        <p class="text-gray-800">${edu.university}</p>
-        <p class="text-sm text-gray-600">${edu.grade}</p>
-      `;
-      educationList.appendChild(div);
-    });
-
-    // Scroll animation
-    const observer = new IntersectionObserver(entries => {
+  <script>
+    // Fade-up Observer
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
-  </script> -->
- 
-  <script>
-    const data = {
-      highlights: [
-        "Career Transition from QA to Development: Successfully transitioned from a strong foundation in Quality Assurance to a full-fledged software development role, leveraging deep understanding of testing principles to build more robust, maintainable, and high-quality software.",
-        "AI-Powered Test Case Generation: Designed and implemented an in-house AI tool at Amdocs for automatic generation of test cases, significantly improving test coverage, reducing manual effort, and enhancing overall efficiency in the QA process.",
-        "Web Service Automation & Regression: Developed an automated framework in SoapUI for running web service regression tests without any prerequisites, enabling parallel and sequential execution of over 40 web services and eliminating dependencies on static environments and service ports.",
-        "Full Lifecycle Development & Testing Expertise: Demonstrated hands-on experience in both software development and QA, contributing to design, development, and testing of complex software systems with a focus on quality, reliability, and performance.",
-        "Innovation & Process Improvement: Known for implementing automation solutions that reduce manual effort, accelerate release cycles, and improve software reliability, bridging the gap between QA and development teams.",
-        "Tech Stack & Tools: Proficient in C/C++, Shell scripting, SoapUI, AI-based automation tools, and various development frameworks; strong command of Linux environments and modern software engineering practices."
-      ],
-      experience: [
-        {
-          role: "Software Developer",
-          company: "Amdocs | Pune, India",
-          period: "Jan 2025 – Present",
-          image: "./amdocs.png",
-          details: `
-            <ul class="list-disc list-inside space-y-1">
-              <li>Transitioned into a developer role within the same application team, leveraging in-depth domain knowledge of prepay systems.</li>
-              <li>Designing, developing, and enhancing modules for rating, charging, and OCS (Online Charging Systems) to improve performance and scalability.</li>
-              <li>Writing clean, optimized, and maintainable code in C++/Java, following OOP principles and design best practices.</li>
-              <li>Implementing automation utilities and scripts to streamline deployments and improve efficiency.</li>
-              <li>Collaborating with cross-functional teams to design new features and ensure seamless integration across systems.</li>
-              <li>Continuing to contribute to production stability by proactively resolving bugs and optimizing system performance.</li>
-            </ul>
-          `
-        },
-        {
-          role: "Functional Test Engineer (QA)",
-          company: "Amdocs | Pune, India",
-          period: "July 2021 – Dec 2024",
-          image: "./amdocs.png",
-          details: `
-            <ul class="list-disc list-inside space-y-1">
-              <li>Performed functional & configuration testing of prepay applications for EE-BT Group (Everything Everywhere).</li>
-              <li>Automated 50% of manual test cases using Shell scripting & Ginger, reducing testing time by 40%.</li>
-              <li>Led the testing effort for British Telecom’s Nexus payment gateway, executing high-volume test cases with a substantial reduction in production defects.</li>
-              <li>Conducted API testing (SOAP & REST) using ReadyAPI, improving test coverage and accelerating execution.</li>
-              <li>Debugged production incidents, executed RCA, and resolved defects within SLA, minimizing downtime.</li>
-              <li><strong>Tools:</strong> Oracle Enterprise Linux, HP-UX Unix, Oracle SQL Developer, Jira, Ginger, HP-QC, ReadyAPI, Shell Scripting, Groovy.</li>
-            </ul>
-          `
-        }
-      ],
-      education: [
-        {
-          degree: "M.Tech in Software Systems",
-          university: "BITS Pilani, RJ - 2025",
-          grade: "GOOD",
-          image: "./BITS.jpg"
-        },
-        {
-          degree: "B.E. in Electronics & Telecommunications",
-          university: "S.B. Jain Institute, Nagpur University - 2021",
-          grade: "8.8 CGPA",
-          image: "./SBJAIN.png"
-        }
-      ]
-    };
+    // Custom Cursor
+    if (!('ontouchstart' in window)) {
+      const cursor = document.getElementById('customCursor');
+      const clickEl = document.getElementById('cursorClick');
+      let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
 
-    // Populate Work Experience
-    const experienceList = document.getElementById("experienceList");
-    data.experience.forEach(exp => {
-      const div = document.createElement("div");
-      div.className = "highlight-box flex items-start gap-4";
-      div.innerHTML = `
-        <img src="${exp.image || ''}" alt="${exp.company} logo" class="w-16 h-16 object-contain rounded-md p-1 bg-white/80 shadow-sm" loading="lazy" onerror="this.style.display='none'">
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900">${exp.role}</h3>
-          <p class="text-sm text-gray-600 mb-2">${exp.company} | ${exp.period}</p>
-          <div class="text-gray-800">${exp.details}</div>
-        </div>
-      `;
-      experienceList.appendChild(div);
-    });
-
-    // Populate Career Highlights
-    const highlightList = document.getElementById("highlightList");
-    data.highlights.forEach(item => {
-      const li = document.createElement("li");
-      li.textContent = item;
-      highlightList.appendChild(li);
-    });
-
-    // Populate Education
-    const educationList = document.getElementById("educationList");
-    data.education.forEach(edu => {
-      const div = document.createElement("div");
-      div.className = "highlight-box flex items-center gap-4";
-      div.innerHTML = `
-        <img src="${edu.image || ''}" alt="${edu.university} logo" class="w-20 h-20 object-contain rounded-md p-1 bg-white/80 shadow-sm" loading="lazy" onerror="this.style.display='none'">
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900">${edu.degree}</h3>
-          <p class="text-gray-800">${edu.university}</p>
-          <p class="text-sm text-gray-600">${edu.grade}</p>
-        </div>
-      `;
-      educationList.appendChild(div);
-    });
-
-    // Scroll animation
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
-  </script>
-
-  <script>
-    // copy email action
-    (function(){
-      const copyBtn = document.getElementById('copyEmailBtn');
-      const feedback = document.getElementById('copyFeedback');
-      const email = 'pillaydevendra3@gmail.com';
-      if (copyBtn) {
-        copyBtn.addEventListener('click', async () => {
-          try {
-            await navigator.clipboard.writeText(email);
-            feedback.classList.add('show');
-            feedback.setAttribute('aria-hidden','false');
-            setTimeout(()=>{ feedback.classList.remove('show'); feedback.setAttribute('aria-hidden','true'); }, 2000);
-          } catch (e) {
-            // fallback
-            const ta = document.createElement('textarea');
-            ta.value = email;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            feedback.classList.add('show');
-            setTimeout(()=>{ feedback.classList.remove('show'); }, 2000);
-          }
-        });
+      function render() {
+        posX += (mouseX - posX) * 0.18;
+        posY += (mouseY - posY) * 0.18;
+        cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+        clickEl.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+        requestAnimationFrame(render);
       }
-    })();
+      render();
+
+      window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+      window.addEventListener('mousedown', () => {
+        clickEl.classList.remove('play');
+        void clickEl.offsetWidth;
+        clickEl.classList.add('play');
+      });
+    }
+
+    // Mobile Menu Toggle
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+      menu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') menu.classList.add('hidden');
+      });
+    }
+
+    // Copy Email
+    const copyBtn = document.getElementById('copyEmailBtn');
+    const feedback = document.getElementById('copyFeedback');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('pillaydevendra3@gmail.com');
+          feedback.classList.add('show');
+          setTimeout(() => feedback.classList.remove('show'), 2000);
+        } catch (e) {
+          const ta = document.createElement('textarea');
+          ta.value = 'pillaydevendra3@gmail.com';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          feedback.classList.add('show');
+          setTimeout(() => feedback.classList.remove('show'), 2000);
+        }
+      });
+    }
   </script>
-
-
-  </body>
+</body>
 </html>
