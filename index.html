@@ -1,748 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Devendra Pillay | Software Development Engineer</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Devendra Pillay | Software Development Engineer</title>
+<meta name="description" content="Devendra Pillay — Software Development Engineer specializing in C/C++ telecom rating & charging systems, system design, and production engineering." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        },
+        colors: {
+          accent: {
+            DEFAULT: '#6366f1',
+            cyan: '#22d3ee',
+          },
+        },
+      },
+    },
+  };
+</script>
 
-  <style>
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      cursor: none;
-      background: #0f0f0f;
-      color: #e5e7eb;
-    }
-    
-    /* Dark Theme Color Palette */
-    :root {
-      --bg-primary: #0f0f0f;
-      --bg-secondary: #1a1a1a;
-      --bg-card: #1e1e1e;
-      --bg-card-hover: #252525;
-      --text-primary: #e5e7eb;
-      --text-secondary: #9ca3af;
-      --text-muted: #6b7280;
-      --border-color: #2a2a2a;
-      --accent-blue: #6366f1;
-      --accent-cyan: #06b6d4;
-      --accent-purple: #8b5cf6;
-    }
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #08090c;
+    color: #e6e8ec;
+  }
 
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Animated gradient background - matching the screenshot */
-    .animated-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      z-index: -1;
-      background: #1a1a1a;
-    }
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.25;
-      filter: blur(120px);
-      animation: moveBlobs 25s infinite ease-in-out;
-      mix-blend-mode: screen;
-    }
-    .blob1 { width: 800px; height: 800px; background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); top: 0%; left: -20%; animation-delay: 0s; }
-    .blob2 { width: 900px; height: 900px; background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); top: 20%; right: -10%; animation-delay: 5s; }
-    .blob3 { width: 1000px; height: 1000px; background: linear-gradient(135deg, #059669 0%, #047857 100%); bottom: -20%; right: -20%; animation-delay: 10s; }
-    @keyframes moveBlobs {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; }
-      33% { transform: translate(80px, -100px) scale(1.15); opacity: 0.3; }
-      66% { transform: translate(-60px, 80px) scale(0.95); opacity: 0.2; }
-    }
-    
-    .tag {
-      background-color: rgba(99, 102, 241, 0.1);
-      color: #a5b4fc;
-      padding: 0.4rem 0.9rem;
-      border-radius: 9999px;
-      font-size: 0.875rem;
-      margin: 0.25rem;
-      display: inline-block;
-      font-weight: 500;
-      border: 1px solid rgba(99, 102, 241, 0.2);
-    }
-    
-    .highlight-box {
-      background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%);
-      border: 1px solid var(--border-color);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-    .highlight-box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
-      border-color: rgba(99, 102, 241, 0.3);
-    }
-    
-    .profile-card {
-      background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(26, 26, 26, 0.8) 100%);
-      border: 1px solid var(--border-color);
-      padding: 2.5rem;
-      border-radius: 1.5rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-    .profile-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
-      border-color: rgba(99, 102, 241, 0.4);
-    }
-    
-    .contact-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 1.25rem;
-      padding: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 2rem;
-      align-items: center;
-      background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(56,189,248,0.05) 100%);
-      border: 1px solid rgba(99,102,241,0.2);
-      box-shadow: 0 10px 40px rgba(99, 102, 241, 0.1);
-      backdrop-filter: blur(10px);
-    }
-    .contact-deco {
-      position: absolute;
-      right: -80px;
-      bottom: -60px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.15), transparent 40%),
-                  radial-gradient(circle at 70% 70%, rgba(56,189,248,0.12), transparent 35%);
-      transform: rotate(20deg);
-      pointer-events: none;
-    }
-    .contact-meta {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-    .meta-pill {
-      background: rgba(99, 102, 241, 0.1);
-      border-radius: 9999px;
-      padding: 0.5rem 0.9rem;
-      font-weight: 600;
-      color: #a5b4fc;
-      display: inline-flex;
-      gap: 0.5rem;
-      align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.7rem 1.4rem;
-      border-radius: 0.75rem;
-      background: linear-gradient(90deg, #6366f1, #06b6d4);
-      color: white;
-      font-weight: 600;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
-    }
-    .btn:hover { 
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
-    }
-    .btn.outline { 
-      background: transparent;
-      color: #a5b4fc;
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      box-shadow: none;
-    }
-    .btn.outline:hover {
-      background: rgba(99, 102, 241, 0.1);
-      border-color: rgba(99, 102, 241, 0.5);
-    }
-    
-    .social-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-    .social-btn {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-      background: rgba(30, 30, 30, 0.6);
-      padding: 0.7rem 1rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      text-decoration: none;
-      color: var(--text-primary);
-      font-weight: 600;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-    .social-btn:hover {
-      transform: translateY(-2px);
-      background: rgba(99, 102, 241, 0.1);
-      border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.2);
-    }
-    .social-icon {
-      width: 28px;
-      height: 28px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0.5rem;
-      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(56,189,248,0.15));
-    }
-    .copy-feedback {
-      display: inline-block;
-      margin-left: 0.5rem;
-      color: #10b981;
-      font-weight: 700;
-      opacity: 0;
-      transform: translateY(-4px);
-      transition: opacity 0.25s, transform 0.25s;
-    }
-    .copy-feedback.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Header styles */
-    header {
-      background: rgba(15, 15, 15, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-color);
-    }
-    
-    /* Hero section */
-    .hero-section {
-      background: linear-gradient(180deg, rgba(15, 15, 15, 0.95) 0%, rgba(26, 26, 26, 0.8) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.1), transparent 60%);
-      pointer-events: none;
-    }
-    
-    /* Profile image with glow effect */
-    .profile-img-wrapper {
-      position: relative;
-    }
-    .profile-img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2),
-                  0 0 40px rgba(99, 102, 241, 0.3),
-                  0 8px 32px rgba(0, 0, 0, 0.6);
-      object-fit: cover;
-      border: 4px solid rgba(99, 102, 241, 0.1);
-      background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 4rem;
-      font-weight: bold;
-    }
-    
-    /* Section headers */
-    .section-header {
-      color: var(--text-primary);
-      font-weight: 700;
-      margin-bottom: 3rem;
-      position: relative;
-      display: inline-block;
-    }
-    .section-header::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60%;
-      height: 3px;
-      background: linear-gradient(90deg, #6366f1, #06b6d4);
-      border-radius: 2px;
-    }
-    
-    /* Skills section */
-    .skills-section {
-      background: rgba(26, 26, 26, 0.5);
-      backdrop-filter: blur(10px);
-    }
-    
-    .skill-card {
-      background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-color);
-      border-top: 3px solid #6366f1;
-      transition: all 0.3s ease;
-    }
-    .skill-card:hover {
-      transform: translateY(-4px);
-      border-top-color: #06b6d4;
-      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
-    }
-    
-    /* Custom Cursor */
-    .custom-cursor {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 44px;
-      height: 44px;
-      pointer-events: none;
-      z-index: 99999;
-      transform: translate3d(-50%, -50%, 0);
-      transition: transform 120ms cubic-bezier(.2,.9,.2,1), opacity 120ms;
-    }
-    .custom-cursor .cursor-img { 
-      width: 44px; 
-      height: 44px;
-      filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.6));
-    }
-    .cursor-click {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 64px;
-      height: 64px;
-      pointer-events: none;
-      z-index: 99998;
-      transform: translate3d(-50%, -50%, 0);
-      opacity: 0;
-    }
-    .cursor-click.play { animation: clickPop 420ms ease-out forwards; opacity: 1; }
-    @keyframes clickPop {
-      0% { transform: translate3d(-50%,-50%,0) scale(.6); opacity: 1; }
-      100% { transform: translate3d(-50%,-50%,0) scale(1.5); opacity: 0; }
-    }
+  ::selection { background: rgba(99,102,241,0.35); color: #fff; }
 
-    /* Navigation styling */
-    header nav a {
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      transition: all 0.2s;
-      color: var(--text-secondary);
-    }
-    header nav a:hover {
-      background-color: rgba(99, 102, 241, 0.15);
-      color: var(--text-primary);
-      transform: translateY(-2px);
-    }
-    header nav a.active {
-      color: #a5b4fc;
-    }
+  /* Subtle grid + glow backdrop instead of blobs */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-color: #08090c;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+  }
+  .bg-glow {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(600px circle at 15% 0%, rgba(99,102,241,0.16), transparent 60%),
+      radial-gradient(500px circle at 85% 10%, rgba(34,211,238,0.10), transparent 55%);
+    pointer-events: none;
+  }
 
-    /* Experience subsection headers */
-    .exp-subsection h4 {
-      color: #a5b4fc;
-      font-size: 1.1rem;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .exp-subsection h4::before {
-      content: '';
-      width: 4px;
-      height: 20px;
-      background: linear-gradient(180deg, #6366f1, #06b6d4);
-      border-radius: 2px;
-    }
+  .fade-up { opacity: 0; transform: translateY(16px); transition: opacity .6s ease-out, transform .6s ease-out; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 780px) {
-      .contact-card { grid-template-columns: 1fr; padding: 1.5rem; }
-      .contact-deco { display: none; }
-      body { cursor: auto; }
-      .custom-cursor, .cursor-click { display: none; }
-      .animated-bg .blob { opacity: 0.08; }
-      .text-5xl { font-size: 2.25rem; }
-      .grid.md\\:grid-cols-2 { grid-template-columns: 1fr; }
-      .grid.lg\\:grid-cols-3 { grid-template-columns: 1fr; }
-      .profile-img { width: 120px; height: 120px; font-size: 3rem; }
-    }
-  </style>
+  .glass {
+    background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+  }
+  .glass-hover { transition: border-color .25s ease, transform .25s ease, background .25s ease; }
+  .glass-hover:hover {
+    border-color: rgba(99,102,241,0.4);
+    transform: translateY(-3px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .8rem;
+    font-weight: 500;
+    padding: .38rem .8rem;
+    border-radius: 9999px;
+    color: #c7d2fe;
+    background: rgba(99,102,241,0.1);
+    border: 1px solid rgba(99,102,241,0.22);
+  }
+
+  .stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    background: linear-gradient(90deg, #a5b4fc, #67e8f9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-size: .72rem;
+    color: #818cf8;
+    font-weight: 600;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .7rem 1.3rem; border-radius: .65rem;
+    background: #f5f5f7; color: #0a0a0c; font-weight: 600; font-size: .92rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,255,255,0.12); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .7rem 1.3rem; border-radius: .65rem;
+    color: #e5e7eb; font-weight: 600; font-size: .92rem;
+    border: 1px solid rgba(255,255,255,0.14);
+    transition: all .2s ease;
+  }
+  .btn-ghost:hover { border-color: rgba(99,102,241,0.5); background: rgba(99,102,241,0.08); }
+
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 9999px; background: #34d399;
+    box-shadow: 0 0 0 3px rgba(52,211,153,0.18);
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .45; }
+  }
+
+  /* Timeline */
+  .timeline-item { position: relative; padding-left: 2.25rem; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 6px; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 9999px;
+    background: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.18);
+  }
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 10px; top: 22px; bottom: -2.5rem;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(99,102,241,0.4), rgba(255,255,255,0.06));
+  }
+  .timeline-item:last-child::after { display: none; }
+
+  .exp-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .74rem;
+    color: #9ca3af;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: .2rem .55rem;
+    border-radius: .4rem;
+  }
+
+  header.scrolled { background: rgba(8,9,12,0.85); border-bottom-color: rgba(255,255,255,0.08); }
+  header { transition: background .3s ease, border-color .3s ease; border-bottom: 1px solid transparent; }
+
+  nav a { position: relative; color: #9ca3af; font-size: .88rem; font-weight: 500; padding: .4rem 0; transition: color .2s; }
+  nav a:hover { color: #fff; }
+  nav a.active { color: #fff; }
+
+  .avatar-ring {
+    background: conic-gradient(from 180deg, #6366f1, #22d3ee, #6366f1);
+    padding: 3px;
+    border-radius: 9999px;
+  }
+  .avatar-inner {
+    border-radius: 9999px;
+    background: #08090c;
+    padding: 4px;
+  }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #0a0a0c; }
+  ::-webkit-scrollbar-thumb { background: #26272b; border-radius: 8px; }
+</style>
 </head>
 
-<body>
-  <div class="animated-bg">
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
-  </div>
+<body class="antialiased">
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
 
-  <div class="custom-cursor" id="customCursor" aria-hidden="true">
-    <svg class="cursor-img" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2">
-      <circle cx="12" cy="12" r="10"/>
-      <path d="M12 8v8m-4-4h8"/>
-    </svg>
-  </div>
-  <div class="cursor-click" id="cursorClick" aria-hidden="true">
-    <div style="width:40px;height:40px;border-radius:12px;background:rgba(99,102,241,0.2);border:2px solid rgba(99,102,241,0.4);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#6366f1"><path d="M8 11V6a1 1 0 1 1 2 0v5M6 13v3a4 4 0 0 0 8 0V9" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </div>
-  </div>
-
-  <header class="sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="text-xl font-semibold text-white">Devendra Pillay</div>
-      <nav class="hidden md:flex space-x-2 text-sm font-medium">
-        <a href="#profile">Profile</a>
+  <header class="sticky top-0 z-50" id="siteHeader">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2.5">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-cyan flex items-center justify-center text-xs font-extrabold text-white">DP</span>
+        <span class="text-[15px] font-semibold text-white">Devendra Pillay</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7">
+        <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <a href="https://github.com/codehunter03/Testimonials/blob/main/Devendra_Pillay_CV-C++.docx" download class="text-blue-400 font-bold">📥 CV</a>
       </nav>
-      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-gray-800">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
+      <div class="flex items-center gap-3">
+        <a href="Devendra_Pillay_3899.pdf" download class="hidden sm:inline-flex btn-ghost !py-2 !px-3.5 !text-[13px]">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+          Resume
+        </a>
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md text-gray-300 hover:bg-white/5" aria-label="Toggle menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
     </div>
-    <div id="mobileMenu" class="md:hidden px-6 pb-4 hidden">
-      <nav class="flex flex-col space-y-2">
-        <a href="#profile" class="py-2">Profile</a>
-        <a href="#skills" class="py-2">Skills</a>
-        <a href="#experience" class="py-2">Experience</a>
-        <a href="#education" class="py-2">Education</a>
-        <a href="#contact" class="py-2">Contact</a>
-        <a href="https://github.com/codehunter03/Testimonials/blob/main/Devendra_Pillay_3899.pdf" download class="py-2 text-blue-400">📥 Download CV</a>
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-5">
+      <nav class="flex flex-col gap-1 glass rounded-xl p-3">
+        <a href="#about" class="py-2 px-2 rounded-lg hover:bg-white/5">About</a>
+        <a href="#skills" class="py-2 px-2 rounded-lg hover:bg-white/5">Skills</a>
+        <a href="#experience" class="py-2 px-2 rounded-lg hover:bg-white/5">Experience</a>
+        <a href="#education" class="py-2 px-2 rounded-lg hover:bg-white/5">Education</a>
+        <a href="#contact" class="py-2 px-2 rounded-lg hover:bg-white/5">Contact</a>
+        <a href="Devendra_Pillay_3899.pdf" download class="py-2 px-2 rounded-lg text-accent-cyan font-semibold">Download Resume</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero-section text-center py-24 relative">
-    <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8 relative z-10">
-      <div class="profile-img-wrapper">
-        <img src="1755623487382.jpg" alt="Devendra Pillay" class="profile-img" style="font-size: 4rem;" onerror="this.style.display='flex'; this.innerHTML='DP';">
+  <!-- HERO -->
+  <section id="home" class="relative pt-16 pb-24 md:pt-24 md:pb-32">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.15fr_.85fr] gap-14 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 chip mb-6">
+          <span class="status-dot"></span> Open to new opportunities
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
+          Building reliable systems<br class="hidden sm:block"/> for <span class="stat-num">telecom-scale</span> traffic.
+        </h1>
+        <p class="mt-5 text-lg text-gray-400 max-w-xl leading-relaxed">
+          Software Development Engineer specializing in <strong class="text-gray-200 font-semibold">C/C++ &amp; Unix</strong> systems for high-volume prepay rating &amp; charging platforms — from high-level design through production-grade reliability.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mt-6">
+          <span class="chip">High-Level Design</span>
+          <span class="chip">Rating &amp; Charging Systems</span>
+          <span class="chip">L3 Production Support</span>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="#contact" class="btn-primary">
+            Get in touch
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+          </a>
+          <a href="Devendra_Pillay_3899.pdf" download class="btn-ghost">Download Resume</a>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6 mt-12 max-w-md">
+          <div>
+            <div class="text-2xl font-extrabold stat-num">99.9%</div>
+            <div class="text-xs text-gray-500 mt-1">Production uptime maintained</div>
+          </div>
+          <div>
+            <div class="text-2xl font-extrabold stat-num">50%</div>
+            <div class="text-xs text-gray-500 mt-1">Test cases automated</div>
+          </div>
+          <div>
+            <div class="text-2xl font-extrabold stat-num">40%</div>
+            <div class="text-xs text-gray-500 mt-1">Faster test cycles</div>
+          </div>
+        </div>
       </div>
-      <div class="text-left">
-        <h1 class="text-5xl font-bold leading-tight text-white">Hi, I'm Devendra Pillay</h1>
-        <p class="text-xl text-gray-400 mt-4">Software Development Engineer | C++ & Unix Specialist | Telecom Domain</p>
-        <div class="mt-4">
-          <span class="tag">High-Level Design</span>
-          <span class="tag">Rating & Charging Systems</span>
-          <span class="tag">L3 Support</span>
+
+      <div class="flex flex-col items-center md:items-end fade-up">
+        <div class="avatar-ring">
+          <div class="avatar-inner">
+            <img src="1755623487382.jpg" alt="Devendra Pillay" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover" onerror="this.parentElement.parentElement.querySelector('.avatar-fallback').classList.remove('hidden'); this.remove();">
+            <div class="avatar-fallback hidden w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-gradient-to-br from-accent to-accent-cyan flex items-center justify-center text-4xl font-extrabold text-white">DP</div>
+          </div>
+        </div>
+        <div class="glass rounded-2xl px-5 py-4 mt-6 w-full max-w-[260px] text-sm space-y-2.5">
+          <div class="flex justify-between"><span class="text-gray-500">Role</span><span class="text-gray-200 font-medium">SDE-1</span></div>
+          <div class="flex justify-between"><span class="text-gray-500">Domain</span><span class="text-gray-200 font-medium">Telecom</span></div>
+          <div class="flex justify-between"><span class="text-gray-500">Location</span><span class="text-gray-200 font-medium">Pune, India</span></div>
+          <div class="flex justify-between"><span class="text-gray-500">Mode</span><span class="text-gray-200 font-medium">Remote / Onsite</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="profile" class="max-w-6xl mx-auto px-6 py-20 fade-up">
-    <h2 class="text-4xl section-header text-center block w-full mb-16">Professional Profile</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <div class="profile-card">
-        <div class="flex items-center mb-4">
-          <span class="text-4xl mr-3">💻</span>
-          <h3 class="text-2xl font-semibold text-white">Engineering Overview</h3>
+  <!-- ABOUT -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-20 fade-up">
+    <p class="section-eyebrow">About</p>
+    <h2 class="text-3xl font-bold text-white mt-2 mb-12">Professional profile</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="glass glass-hover rounded-2xl p-7">
+        <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m11-5v3a2 2 0 01-2 2h-3"/></svg>
         </div>
-        <p class="text-gray-400 leading-relaxed">
-          I am a Software Developer specializing in the design and implementation of high-performance C/C++ applications for telecom prepay systems. I bridge the gap between business requirements and technical architecture, ensuring seamless production operations for mission-critical rating and charging modules.
+        <h3 class="text-lg font-semibold text-white mb-2">Engineering overview</h3>
+        <p class="text-gray-400 leading-relaxed text-[15px]">
+          I'm a Software Developer specializing in the design and implementation of high-performance C/C++ applications for telecom prepay systems. I bridge the gap between business requirements and technical architecture, ensuring seamless production operations for mission-critical rating and charging modules.
         </p>
       </div>
-
-      <div class="profile-card">
-        <div class="flex items-center mb-4">
-          <span class="text-4xl mr-3">📐</span>
-          <h3 class="text-2xl font-semibold text-white">System Design & Architecture</h3>
+      <div class="glass glass-hover rounded-2xl p-7">
+        <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2"><path d="M4 21V9m8 12V3m8 18V13"/></svg>
         </div>
-        <p class="text-gray-400 leading-relaxed">
+        <h3 class="text-lg font-semibold text-white mb-2">System design &amp; architecture</h3>
+        <p class="text-gray-400 leading-relaxed text-[15px]">
           Expert in creating detailed Impact Assessments, High-Level Designs (HLD), and Low-Level Designs (LLD). I lead technical walkthroughs for clients and develop comprehensive implementation plans to ensure zero-downtime deployments.
         </p>
       </div>
     </div>
   </section>
 
-  <section id="skills" class="skills-section py-20 px-6 fade-up">
-    <h2 class="text-3xl section-header text-center block w-full">Tools & Technologies</h2>
-    <div class="flex flex-wrap justify-center gap-3 mb-16 max-w-4xl mx-auto">
-      <span class="tag">C / C++</span>
-      <span class="tag">Shell Scripting (Bash/KSH)</span>
-      <span class="tag">RHE-Linux</span>
-      <span class="tag">Oracle SQL Developer</span>
-      <span class="tag">Pro*C</span>
-      <span class="tag">Tuxedo</span>
-      <span class="tag">Socket Programming</span>
-      <span class="tag">JIRA & Problem Management</span>
-      <span class="tag">Jenkins CI/CD</span>
-      <span class="tag">REST/SOAP APIs</span>
+  <!-- SKILLS -->
+  <section id="skills" class="max-w-6xl mx-auto px-6 py-20 fade-up">
+    <p class="section-eyebrow">Skills</p>
+    <h2 class="text-3xl font-bold text-white mt-2 mb-12">Tools &amp; technologies</h2>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-14">
+      <div class="glass rounded-2xl p-6">
+        <h4 class="text-sm font-semibold text-gray-300 mb-3.5">Languages &amp; Data Access</h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="chip">C / C++</span>
+          <span class="chip">Pro*C</span>
+          <span class="chip">Oracle SQL Developer</span>
+        </div>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h4 class="text-sm font-semibold text-gray-300 mb-3.5">Systems &amp; Middleware</h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="chip">RHE Linux</span>
+          <span class="chip">Tuxedo</span>
+          <span class="chip">Socket Programming</span>
+        </div>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h4 class="text-sm font-semibold text-gray-300 mb-3.5">Tooling &amp; Delivery</h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="chip">Shell Scripting (Bash/KSH)</span>
+          <span class="chip">Jenkins CI/CD</span>
+          <span class="chip">REST/SOAP APIs</span>
+          <span class="chip">JIRA &amp; Problem Management</span>
+        </div>
+      </div>
     </div>
 
-    <div class="max-w-5xl mx-auto space-y-6">
-      <h3 class="text-2xl font-semibold text-center mb-8 text-white">Core Software Competencies</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="skill-card">
-          <strong class="block mb-2 text-lg text-white">System Design (HLD/LLD)</strong>
-          <p class="text-sm text-gray-400">Translating complex change requests into robust architectural designs with focus on low-latency telecom processing.</p>
-        </div>
-
-        <div class="skill-card">
-          <strong class="block mb-2 text-lg text-white">Backend Development</strong>
-          <p class="text-sm text-gray-400">Writing and optimizing C++ code for high-volume rating engines, utilizing efficient data structures and OOP principles.</p>
-        </div>
-
-        <div class="skill-card">
-          <strong class="block mb-2 text-lg text-white">L3 Engineering & RCA</strong>
-          <p class="text-sm text-gray-400">Managing complex production issues via Root Cause Analysis, hotfix implementation, and system performance tuning.</p>
-        </div>
-
-        <div class="skill-card">
-          <strong class="block mb-2 text-lg text-white">Technical Consultancy</strong>
-          <p class="text-sm text-gray-400">Leading client walkthroughs and acting as technical bridge between business stakeholders and dev teams.</p>
-        </div>
-
-        <div class="skill-card">
-          <strong class="block mb-2 text-lg text-white">Unix Automation</strong>
-          <p class="text-sm text-gray-400">Developing shell scripts for cron job management, environment health monitoring, and stress testing runbooks.</p>
-        </div>
-
-        <div class="skill-card">
-          <strong class="block mb-2 text-lg text-white">API Testing</strong>
-          <p class="text-sm text-gray-400">Expert in ReadyAPI for SOAP/REST services testing and automation.</p>
-        </div>
+    <h3 class="text-lg font-semibold text-white mb-6">Core competencies</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="glass glass-hover rounded-xl p-5 border-t-2 !border-t-accent">
+        <strong class="block mb-1.5 text-white">System Design (HLD/LLD)</strong>
+        <p class="text-sm text-gray-400 leading-relaxed">Translating complex change requests into robust architectural designs focused on low-latency telecom processing.</p>
+      </div>
+      <div class="glass glass-hover rounded-xl p-5 border-t-2 !border-t-accent">
+        <strong class="block mb-1.5 text-white">Backend Development</strong>
+        <p class="text-sm text-gray-400 leading-relaxed">Writing and optimizing C++ code for high-volume rating engines using efficient data structures and OOP.</p>
+      </div>
+      <div class="glass glass-hover rounded-xl p-5 border-t-2 !border-t-accent">
+        <strong class="block mb-1.5 text-white">L3 Engineering &amp; RCA</strong>
+        <p class="text-sm text-gray-400 leading-relaxed">Managing complex production issues via root cause analysis, hotfix implementation, and performance tuning.</p>
+      </div>
+      <div class="glass glass-hover rounded-xl p-5 border-t-2 !border-t-accent">
+        <strong class="block mb-1.5 text-white">Technical Consultancy</strong>
+        <p class="text-sm text-gray-400 leading-relaxed">Leading client walkthroughs and acting as the technical bridge between stakeholders and dev teams.</p>
+      </div>
+      <div class="glass glass-hover rounded-xl p-5 border-t-2 !border-t-accent">
+        <strong class="block mb-1.5 text-white">Unix Automation</strong>
+        <p class="text-sm text-gray-400 leading-relaxed">Developing shell scripts for cron job management, environment health monitoring, and stress-test runbooks.</p>
+      </div>
+      <div class="glass glass-hover rounded-xl p-5 border-t-2 !border-t-accent">
+        <strong class="block mb-1.5 text-white">API Testing</strong>
+        <p class="text-sm text-gray-400 leading-relaxed">Expert in ReadyAPI for SOAP/REST service testing and automation.</p>
       </div>
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
   <section id="experience" class="max-w-4xl mx-auto px-6 py-20 fade-up">
-    <h2 class="text-3xl section-header text-center block w-full">Work Experience</h2>
-    <div class="space-y-6">
-      <div class="highlight-box">
-        <div class="flex items-start gap-4 mb-3">
-          <img src="amdocs.png" alt="Amdocs" class="w-16 h-16 object-contain rounded-lg p-2 bg-white/5" onerror="this.style.display='none';">
-          <div class="flex-1">
-            <h3 class="text-2xl font-semibold text-white">Software Developer</h3>
-            <p class="text-sm text-gray-500">Amdocs | Pune, India | Jan 2025 – Present</p>
+    <p class="section-eyebrow">Experience</p>
+    <h2 class="text-3xl font-bold text-white mt-2 mb-12">Work experience</h2>
+
+    <div class="space-y-14">
+      <div class="timeline-item">
+        <div class="glass glass-hover rounded-2xl p-7">
+          <div class="flex items-start gap-4 mb-5">
+            <img src="amdocs.png" alt="Amdocs" class="w-12 h-12 object-contain rounded-lg p-1.5 bg-white/5 shrink-0" onerror="this.style.display='none';">
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 class="text-xl font-semibold text-white">Software Developer</h3>
+                <span class="text-xs font-mono text-accent-cyan">Jan 2025 – Present</span>
+              </div>
+              <p class="text-sm text-gray-500">Amdocs · Pune, India</p>
+            </div>
+          </div>
+
+          <div class="space-y-5">
+            <div>
+              <h4 class="text-sm font-semibold text-gray-200 mb-2">System Design &amp; Architecture</h4>
+              <ul class="space-y-1.5 text-sm text-gray-400 leading-relaxed list-disc list-inside ml-1">
+                <li>Translating complex change requests into robust HLDs and LLDs with a focus on low-latency telecom processing for rating and charging systems</li>
+                <li>Creating detailed Impact Assessments to evaluate system-wide effects of proposed changes and minimize operational risk</li>
+                <li>Leading technical walkthroughs with clients to present design solutions and gather feedback</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-gray-200 mb-2">Backend Development</h4>
+              <ul class="space-y-1.5 text-sm text-gray-400 leading-relaxed list-disc list-inside ml-1">
+                <li>Writing and optimizing C++ and C code for high-volume rating engines using efficient data structures, algorithms, and OOP principles</li>
+                <li>Developing mission-critical modules for OCS (Online Charging Systems) with emphasis on performance, scalability, and fault tolerance</li>
+                <li>Implementing Pro*C embedded SQL for seamless database integration with Oracle systems</li>
+                <li>Working with Tuxedo middleware and socket programming for distributed transaction processing</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-gray-200 mb-2">Problem Management &amp; Technical Consultancy</h4>
+              <ul class="space-y-1.5 text-sm text-gray-400 leading-relaxed list-disc list-inside ml-1">
+                <li>Managing the full lifecycle of Jira tasks and defects from initial assessment to code check-in and deployment verification</li>
+                <li>Acting as technical bridge between business stakeholders and development teams, translating requirements into actionable solutions</li>
+                <li>Conducting client walkthroughs for change requests and providing expert guidance on system capabilities and limitations</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-gray-200 mb-2">L3 Engineering Support &amp; Root Cause Analysis</h4>
+              <ul class="space-y-1.5 text-sm text-gray-400 leading-relaxed list-disc list-inside ml-1">
+                <li>Managing complex production issues through detailed RCA, implementing hotfixes, and performing system performance tuning</li>
+                <li>Proposing effective theories and workarounds during deployment issues, coordinating rollbacks when necessary to maintain 99.9% system uptime</li>
+                <li>Debugging production incidents in real-time using core dumps, log analysis, and GDB for mission-critical prepay applications</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/8">
+            <span class="exp-tag">C/C++</span><span class="exp-tag">Pro*C</span><span class="exp-tag">Bash/KSH</span>
+            <span class="exp-tag">Oracle SQL Developer</span><span class="exp-tag">Tuxedo</span><span class="exp-tag">Sockets</span>
+            <span class="exp-tag">Jenkins</span><span class="exp-tag">JIRA</span><span class="exp-tag">RHE-Linux</span><span class="exp-tag">REST/SOAP</span>
           </div>
         </div>
-        
-        <div class="mb-5 exp-subsection">
-          <h4>System Design & Architecture</h4>
-          <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm ml-2">
-            <li>Translating complex change requests into robust High-Level Designs (HLD) and Low-Level Designs (LLD) with a focus on low-latency telecom processing for rating and charging systems</li>
-            <li>Creating detailed Impact Assessments to evaluate system-wide effects of proposed changes and minimize operational risk</li>
-            <li>Leading technical walkthroughs with clients to present design solutions and gather feedback</li>
-          </ul>
-        </div>
-
-        <div class="mb-5 exp-subsection">
-          <h4>Backend Development</h4>
-          <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm ml-2">
-            <li>Writing and optimizing C++ and C code for high-volume rating engines, utilizing efficient data structures, algorithms, and OOP principles</li>
-            <li>Developing mission-critical modules for OCS (Online Charging Systems) with emphasis on performance, scalability, and fault tolerance</li>
-            <li>Implementing Pro*C embedded SQL for seamless database integration with Oracle systems</li>
-            <li>Working with Tuxedo middleware and socket programming for distributed transaction processing</li>
-          </ul>
-        </div>
-
-        <div class="mb-5 exp-subsection">
-          <h4>Problem Management & Technical Consultancy</h4>
-          <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm ml-2">
-            <li>Managing the full lifecycle of Jira tasks and defects from initial assessment to code check-in and deployment verification</li>
-            <li>Acting as technical bridge between business stakeholders and development teams, translating requirements into actionable technical solutions</li>
-            <li>Conducting client walkthroughs for change requests and providing expert guidance on system capabilities and limitations</li>
-          </ul>
-        </div>
-
-        <div class="mb-4 exp-subsection">
-          <h4>L3 Engineering Support & Root Cause Analysis</h4>
-          <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm ml-2">
-            <li>Managing complex production issues through detailed Root Cause Analysis (RCA), implementing hotfixes, and performing system performance tuning</li>
-            <li>Proposing effective theories and workarounds during deployment issues, coordinating rollbacks when necessary to maintain 99.9% system uptime</li>
-            <li>Debugging production incidents in real-time using core dumps, log analysis, and GDB for mission-critical prepay applications</li>
-          </ul>
-        </div>
-
-        <p class="text-sm text-gray-500 mt-4 pt-4 border-t border-gray-800"><strong class="text-gray-400">Tech Stack:</strong> C/C++, Pro*C, Shell Scripting (Bash/KSH), Oracle SQL Developer, Tuxedo, Socket Programming, Jenkins, JIRA, RHE-Linux, REST/SOAP APIs</p>
       </div>
 
-      <div class="highlight-box">
-        <div class="flex items-start gap-4 mb-3">
-          <img src="amdocs.png" alt="Amdocs" class="w-16 h-16 object-contain rounded-lg p-2 bg-white/5" onerror="this.style.display='none';">
-          <div class="flex-1">
-            <h3 class="text-2xl font-semibold text-white">Functional Test Engineer (QA)</h3>
-            <p class="text-sm text-gray-500">Amdocs | Pune, India | July 2021 – Dec 2024</p>
+      <div class="timeline-item">
+        <div class="glass glass-hover rounded-2xl p-7">
+          <div class="flex items-start gap-4 mb-5">
+            <img src="amdocs.png" alt="Amdocs" class="w-12 h-12 object-contain rounded-lg p-1.5 bg-white/5 shrink-0" onerror="this.style.display='none';">
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 class="text-xl font-semibold text-white">Functional Test Engineer (QA)</h3>
+                <span class="text-xs font-mono text-accent-cyan">Jul 2021 – Dec 2024</span>
+              </div>
+              <p class="text-sm text-gray-500">Amdocs · Pune, India</p>
+            </div>
+          </div>
+          <ul class="space-y-1.5 text-sm text-gray-400 leading-relaxed list-disc list-inside ml-1">
+            <li>Automated 50% of manual test cases using Shell scripting &amp; Ginger, reducing testing time by 40%</li>
+            <li>Led testing for British Telecom's Nexus payment gateway with significant defect reduction</li>
+            <li>Conducted API testing (SOAP &amp; REST) using ReadyAPI, improving test coverage and execution speed</li>
+            <li>Debugged production incidents, executed RCA, and resolved defects within SLA, minimizing downtime</li>
+          </ul>
+          <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/8">
+            <span class="exp-tag">Oracle Enterprise Linux</span><span class="exp-tag">HP-UX Unix</span>
+            <span class="exp-tag">Oracle SQL Developer</span><span class="exp-tag">JIRA</span><span class="exp-tag">Ginger</span>
+            <span class="exp-tag">HP-QC</span><span class="exp-tag">ReadyAPI</span><span class="exp-tag">Groovy</span>
           </div>
         </div>
-        <ul class="list-disc list-inside space-y-2 text-gray-400">
-          <li>Automated 50% of manual test cases using Shell scripting & Ginger, reducing testing time by 40%</li>
-          <li>Led testing for British Telecom's Nexus payment gateway with significant defect reduction</li>
-          <li>Conducted API testing (SOAP & REST) using ReadyAPI, improving test coverage and execution speed</li>
-          <li>Debugged production incidents, executed RCA, and resolved defects within SLA, minimizing downtime</li>
-          <li><strong class="text-gray-400">Tools:</strong> Oracle Enterprise Linux, HP-UX Unix, Oracle SQL Developer, Jira, Ginger, HP-QC, ReadyAPI, Shell Scripting, Groovy</li>
-        </ul>
       </div>
     </div>
   </section>
 
-  <section id="education" class="skills-section py- px-8 fade-up">
-    <h2 class="text-3xl section-header text-center block w-full">Education</h2>
-    <div class="max-w-xl mx-auto space-y-6">
-      <div class="highlight-box">  
-        <div class="flex items-start gap-4 mb-3">
-          <img src="BITS.jpg" alt="BITS Pilani" class="w-16 h-16 object-contain rounded-lg p-2 bg-white/5" onerror="this.style.display='none';">
+  <!-- EDUCATION -->
+  <section id="education" class="max-w-4xl mx-auto px-6 py-20 fade-up">
+    <p class="section-eyebrow">Education</p>
+    <h2 class="text-3xl font-bold text-white mt-2 mb-12">Education</h2>
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="glass glass-hover rounded-2xl p-6">
+        <div class="flex items-start gap-4">
+          <img src="BITS.jpg" alt="BITS Pilani" class="w-12 h-12 object-contain rounded-lg p-1.5 bg-white/5 shrink-0" onerror="this.style.display='none';">
           <div class="flex-1">
-            <h3 class="text-xl font-semibold text-white">M.Tech in Software Systems</h3>
-            <p class="text-gray-300 text-sm">BITS Pilani, RJ - 2025</p>
-            <p class="text-sm text-gray-500 mt-1">GOOD</p>
+            <h3 class="text-base font-semibold text-white">M.Tech in Software Systems</h3>
+            <p class="text-gray-400 text-sm mt-0.5">BITS Pilani, RJ · 2025</p>
+            <span class="chip mt-3">Grade: Good</span>
           </div>
         </div>
-
       </div>
-      <div class="highlight-box">
-        <div class="flex items-start gap-4 mb-3">
-      <img src="SBJAIN.png" alt="S.B. Jain Institute" class="w-16 h-16 object-contain rounded-lg p-2 bg-white/5" onerror="this.style.display='none';">
-      <div class="flex-1">
-        <h3 class="text-xl font-semibold text-white">B.E. in Electronics & Telecommunications</h3>
-        <p class="text-gray-300 text-sm">S.B. Jain Institute, Nagpur University - 2021</p>
-        <p class="text-sm text-gray-500 mt-1">8.8 CGPA</p>
+      <div class="glass glass-hover rounded-2xl p-6">
+        <div class="flex items-start gap-4">
+          <img src="SBJAIN.png" alt="S.B. Jain Institute" class="w-12 h-12 object-contain rounded-lg p-1.5 bg-white/5 shrink-0" onerror="this.style.display='none';">
+          <div class="flex-1">
+            <h3 class="text-base font-semibold text-white">B.E. in Electronics &amp; Telecommunications</h3>
+            <p class="text-gray-400 text-sm mt-0.5">S.B. Jain Institute, Nagpur University · 2021</p>
+            <span class="chip mt-3">8.8 CGPA</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact" class="max-w-5xl mx-auto px-6 py-20 fade-up">
-    <h2 class="text-2xl section-header text-center block w-full mb-8">Contact Me</h2>
-    <div class="contact-card">
-      <div>
-        <h3 class="text-xl font-bold mb-2 text-white">Let's build something great together</h3>
-        <p class="text-gray-400 mb-4">Open to new opportunities, collaborations and contract work. Quick responses — send a message or use the links to connect.</p>
-        
-        <div class="contact-meta">
-          <span class="meta-pill">SDE-1</span>
-          <span class="meta-pill">Telecom & Automation</span>
-          <span class="meta-pill">Remote / Onsite</span>
-        </div>
+    <p class="section-eyebrow text-center block">Contact</p>
+    <h2 class="text-3xl font-bold text-white mt-2 mb-12 text-center">Let's work together</h2>
 
-        <div class="flex gap-3 items-center flex-wrap">
-          <a href="mailto:pillaydevendra3@gmail.com" class="btn">✉️ Email Me</a>
-          <button id="copyEmailBtn" class="btn outline">📋 Copy</button>
-          <span id="copyFeedback" class="copy-feedback">Copied ✓</span>
+    <div class="glass rounded-3xl p-8 md:p-12 grid md:grid-cols-[1.3fr_1fr] gap-10 relative overflow-hidden">
+      <div class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full bg-gradient-to-br from-accent/10 to-accent-cyan/10 blur-3xl pointer-events-none"></div>
+
+      <div class="relative">
+        <h3 class="text-xl font-bold text-white mb-2">Open to new opportunities</h3>
+        <p class="text-gray-400 leading-relaxed mb-5 max-w-md">Open to new opportunities, collaborations, and contract work. Quick responses — send a message or use the links to connect.</p>
+        <div class="flex flex-wrap gap-2 mb-7">
+          <span class="chip">SDE-1</span>
+          <span class="chip">Telecom &amp; Automation</span>
+          <span class="chip">Remote / Onsite</span>
+        </div>
+        <div class="flex flex-wrap gap-3 items-center">
+          <a href="mailto:pillaydevendra3@gmail.com" class="btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+            Email me
+          </a>
+          <button id="copyEmailBtn" class="btn-ghost">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy email
+          </button>
+          <span id="copyFeedback" class="text-emerald-400 text-sm font-semibold opacity-0 transition-opacity duration-300">Copied ✓</span>
         </div>
       </div>
 
-      <div class="social-grid">
-        <a class="social-btn" href="https://www.linkedin.com/in/devendra-pillay-812865157/" target="_blank" rel="noopener">
-          <span class="social-icon">💼</span>
-          <span>LinkedIn</span>
+      <div class="relative flex flex-col gap-3">
+        <a class="glass glass-hover rounded-xl flex items-center gap-3 px-4 py-3 text-sm font-semibold text-gray-200" href="https://www.linkedin.com/in/devendra-pillay-812865157/" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#a5b4fc"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.98 1.83-2 3.77-2 4.03 0 4.78 2.55 4.78 5.87V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H9z"/></svg>
+          LinkedIn
         </a>
-        <a class="social-btn" href="https://github.com/codehunter03" target="_blank" rel="noopener">
-          <span class="social-icon">👨‍💻</span>
-          <span>GitHub</span>
+        <a class="glass glass-hover rounded-xl flex items-center gap-3 px-4 py-3 text-sm font-semibold text-gray-200" href="https://github.com/codehunter03" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#a5b4fc"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 015 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg>
+          GitHub
         </a>
-        <a class="social-btn" href="mailto:pillaydevendra3@gmail.com">
-          <span class="social-icon">📧</span>
-          <span>Email</span>
+        <a class="glass glass-hover rounded-xl flex items-center gap-3 px-4 py-3 text-sm font-semibold text-gray-200" href="mailto:pillaydevendra3@gmail.com">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2"><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+          pillaydevendra3@gmail.com
+        </a>
+        <a class="glass glass-hover rounded-xl flex items-center gap-3 px-4 py-3 text-sm font-semibold text-gray-200" href="Devendra_Pillay_3899.pdf" download>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+          Download resume
         </a>
       </div>
-
-      <div class="contact-deco"></div>
     </div>
   </section>
 
-  <footer class="text-center text-sm text-gray-600 border-t border-gray-800 py-6 mt-12">
+  <footer class="text-center text-sm text-gray-600 border-t border-white/8 py-8">
     &copy; 2026 Devendra Pillay. All rights reserved.
   </footer>
 
   <script>
-    // Fade-up Observer
+    // Scroll-reveal
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // Custom Cursor
-    if (!('ontouchstart' in window)) {
-      const cursor = document.getElementById('customCursor');
-      const clickEl = document.getElementById('cursorClick');
-      let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
+    // Header background on scroll
+    const header = document.getElementById('siteHeader');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
 
-      function render() {
-        posX += (mouseX - posX) * 0.18;
-        posY += (mouseY - posY) * 0.18;
-        cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-        clickEl.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-        requestAnimationFrame(render);
-      }
-      render();
-
-      window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-      window.addEventListener('mousedown', () => {
-        clickEl.classList.remove('play');
-        void clickEl.offsetWidth;
-        clickEl.classList.add('play');
+    // Active nav link tracking
+    const navLinks = document.querySelectorAll('header nav a[href^="#"]');
+    const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const link = document.querySelector(`header nav a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
       });
-    }
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => navObserver.observe(s));
 
-    // Mobile Menu Toggle
+    // Mobile menu
     const btn = document.getElementById('mobileMenuBtn');
     const menu = document.getElementById('mobileMenu');
     if (btn && menu) {
-      btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-      });
-      menu.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A') menu.classList.add('hidden');
-      });
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      menu.addEventListener('click', (e) => { if (e.target.tagName === 'A') menu.classList.add('hidden'); });
     }
 
-    // Copy Email
+    // Copy email
     const copyBtn = document.getElementById('copyEmailBtn');
     const feedback = document.getElementById('copyFeedback');
     if (copyBtn) {
       copyBtn.addEventListener('click', async () => {
+        const email = 'pillaydevendra3@gmail.com';
         try {
-          await navigator.clipboard.writeText('pillaydevendra3@gmail.com');
-          feedback.classList.add('show');
-          setTimeout(() => feedback.classList.remove('show'), 2000);
+          await navigator.clipboard.writeText(email);
         } catch (e) {
           const ta = document.createElement('textarea');
-          ta.value = 'pillaydevendra3@gmail.com';
+          ta.value = email;
           document.body.appendChild(ta);
           ta.select();
           document.execCommand('copy');
           document.body.removeChild(ta);
-          feedback.classList.add('show');
-          setTimeout(() => feedback.classList.remove('show'), 2000);
         }
+        feedback.style.opacity = '1';
+        setTimeout(() => { feedback.style.opacity = '0'; }, 2000);
       });
     }
   </script>
